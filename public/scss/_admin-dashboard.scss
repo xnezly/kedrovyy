@@ -1,0 +1,1332 @@
+// ===== ADMIN DASHBOARD =====
+// Стили для главной страницы админ-панели
+@use "admin-variables" as *;
+@use "variables" as *;
+
+// ----- Заголовок дашборда -----
+.admin-dashboard__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $admin-border;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    @media (max-width: $breakpoint-md) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.admin-dashboard__title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $admin-text-primary;
+    margin: 0;
+}
+
+.admin-dashboard__datetime {
+    font-size: $font-size-sm;
+    color: $admin-text-secondary;
+    font-weight: $font-weight-medium;
+}
+
+// ===== STAT CARDS =====
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+
+    @media (max-width: $breakpoint-xl) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.admin-stat-card {
+    background: $admin-card-bg;
+    border-radius: $border-radius-lg;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: $shadow-base;
+    border: 1px solid $admin-border;
+    transition: $admin-transition;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-lg;
+    }
+
+    // Цветовые модификаторы
+    &--success {
+        border-top: 1px solid $color-success;
+
+        .admin-stat-card__icon {
+            background: rgba(25, 135, 84, 0.1);
+            color: $color-success;
+        }
+    }
+
+    &--warning {
+        border-top: 1px solid $color-warning;
+
+        .admin-stat-card__icon {
+            background: rgba(255, 193, 7, 0.1);
+            color: $color-warning;
+        }
+    }
+
+    &--info {
+        border-top: 1px solid $color-info;
+
+        .admin-stat-card__icon {
+            background: rgba(13, 202, 240, 0.1);
+            color: $color-info;
+        }
+    }
+
+    &--primary {
+        border-top: 1px solid $primary-blue;
+
+        .admin-stat-card__icon {
+            background: rgba(13, 110, 253, 0.1);
+            color: $primary-blue;
+        }
+    }
+}
+
+.admin-stat-card__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    transition: $admin-transition;
+
+    i {
+        font-size: 24px;
+    }
+}
+
+.admin-stat-card__value {
+    font-size: 32px;
+    font-weight: $font-weight-bold;
+    color: $admin-text-primary;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.admin-stat-card__label {
+    font-size: $font-size-sm;
+    color: $admin-text-secondary;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+// ===== RECENT APPLICATIONS CARD =====
+.admin-dashboard__section {
+    margin-bottom: 30px;
+}
+
+.admin-dashboard__section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.admin-dashboard__section-title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: $admin-text-primary;
+    margin: 0;
+}
+
+// ----- Таблица последних заявок -----
+.admin-recent-table {
+    background: $admin-card-bg;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-base;
+    border: 1px solid $admin-border;
+    overflow: hidden;
+}
+
+.admin-recent-table__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    border-bottom: 1px solid $admin-border;
+    background-color: $color-white;
+}
+
+.admin-recent-table__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $admin-text-primary;
+    margin: 0;
+}
+
+.admin-recent-table__link {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $primary-blue;
+    text-decoration: none;
+    padding: 6px 16px;
+    border: 1px solid $primary-blue;
+    border-radius: $border-radius-pill;
+    transition: $admin-transition;
+
+    &:hover {
+        background: $primary-blue;
+        color: $white;
+    }
+}
+
+.admin-recent-table__body {
+    padding: 0;
+}
+
+.admin-recent-table__wrapper {
+    overflow-x: auto;
+}
+
+.admin-recent-table__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+
+    thead {
+        th {
+            padding: 14px 20px;
+            font-size: $font-size-sm;
+            font-weight: $font-weight-semibold;
+            color: $admin-text-secondary;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            border-bottom: 1px solid $admin-border;
+            text-align: left;
+            white-space: nowrap;
+        }
+    }
+
+    tbody {
+        tr {
+            transition: background $transition-fast;
+
+            &:hover {
+                background: rgba(25, 135, 84, 0.03);
+            }
+        }
+    }
+
+    td {
+        padding: 16px 20px;
+        border-bottom: 1px solid $admin-border;
+        font-size: $font-size-base;
+        color: $admin-text-primary;
+        vertical-align: middle;
+
+        &:first-child {
+            font-weight: $font-weight-semibold;
+            color: $admin-text-primary;
+        }
+    }
+}
+
+.admin-recent-table__guest {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.admin-recent-table__guest-name {
+    font-weight: $font-weight-semibold;
+    color: $admin-text-primary;
+}
+
+.admin-recent-table__guest-phone {
+    font-size: $font-size-sm;
+    color: $admin-text-secondary;
+}
+
+.admin-recent-table__dates {
+    font-size: $font-size-sm;
+    color: $admin-text-primary;
+    white-space: nowrap;
+}
+
+.admin-recent-table__empty {
+    padding: 40px 20px !important;
+    text-align: center;
+    color: $admin-text-secondary;
+}
+
+// ===== QUICK ACTIONS =====
+.admin-quick-actions {
+    background: $admin-card-bg;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-base;
+    border: 1px solid $admin-border;
+}
+
+.admin-quick-actions__header {
+    padding: 18px 24px;
+    border-bottom: 1px solid $admin-border;
+    background: $color-white;
+}
+
+.admin-quick-actions__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $admin-text-primary;
+    margin: 0;
+}
+
+.admin-quick-actions__body {
+    padding: 24px;
+}
+
+.admin-quick-actions__grid {
+    display: grid;
+    gap: 12px;
+}
+
+.admin-quick-actions__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    border-radius: $border-radius-pill;
+    border: none;
+    cursor: pointer;
+    transition: $admin-transition;
+    text-decoration: none;
+    text-align: center;
+
+    i {
+        font-size: 18px;
+    }
+
+    // Primary / Success
+    &--success {
+        background: $color-success;
+        color: $white;
+
+        &:hover {
+            background: $primary-green-dark;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(25, 135, 84, 0.4);
+        }
+    }
+
+    // Outline
+    &--outline {
+        background: transparent;
+        border: 1px solid $primary-blue;
+        color: $primary-blue;
+
+        &:hover {
+            background: $primary-blue;
+            color: $white;
+            transform: translateY(-2px);
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none !important;
+    }
+}
+
+// ===== BADGES (дополнение) =====
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    border-radius: $border-radius-pill;
+    font-size: 12px;
+    font-weight: $font-weight-semibold;
+    line-height: 1;
+
+    &--success {
+        background: $color-success-bg;
+        color: $color-success-text;
+    }
+
+    &--warning {
+        background: $color-warning-bg;
+        color: $color-warning-text;
+    }
+
+    &--danger {
+        background: $color-danger-bg;
+        color: $color-danger-text;
+    }
+
+    &--info {
+        background: $color-info-bg;
+        color: $color-info-text;
+    }
+}
+
+// ===== BUTTONS (дополнение для админки) =====
+.admin-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    border-radius: $border-radius-pill;
+    border: none;
+    cursor: pointer;
+    transition: $admin-transition;
+    text-decoration: none;
+
+    &--sm {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+
+    &--outline {
+        background: transparent;
+        border: 1px solid $admin-border;
+        color: $admin-text-primary;
+
+        &:hover {
+            border-color: $admin-primary;
+            color: $admin-primary;
+            background: rgba(25, 135, 84, 0.05);
+        }
+    }
+
+    &--primary {
+        background: $admin-primary;
+        color: $white;
+
+        &:hover {
+            background: $primary-green-dark;
+        }
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+// ===== RESPONSIVE =====
+@media (max-width: $breakpoint-lg) {
+    .admin-recent-table__table {
+        min-width: 700px;
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .admin-dashboard__header {
+        padding: 0 16px;
+    }
+
+    .admin-stat-card {
+        padding: 20px 16px;
+    }
+
+    .admin-stat-card__value {
+        font-size: 28px;
+    }
+
+    .admin-recent-table {
+        margin: 0 16px;
+        border-radius: 16px;
+    }
+
+    .admin-recent-table__header {
+        padding: 16px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .admin-quick-actions {
+        margin: 0 16px;
+        border-radius: 16px;
+    }
+
+    .admin-quick-actions__body {
+        padding: 20px;
+    }
+
+    .admin-quick-actions__btn {
+        width: 100%;
+    }
+}
+
+// ===== ANIMATIONS =====
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Применяем анимации к карточкам при загрузке
+.admin-stat-card,
+.admin-recent-table,
+.admin-quick-actions {
+    animation: slideUp 0.4s ease forwards;
+    opacity: 0;
+
+    &:nth-child(1) { animation-delay: 0.1s; }
+    &:nth-child(2) { animation-delay: 0.2s; }
+    &:nth-child(3) { animation-delay: 0.3s; }
+    &:nth-child(4) { animation-delay: 0.4s; }
+}
+
+// После анимации — видимые
+@keyframes showElement {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// =====================================================
+// ADMIN ROOMS MANAGEMENT
+// =====================================================
+
+.admin-rooms {
+    // ===== HEADER =====
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        @media (max-width: $breakpoint-md) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__title {
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-bold;
+        color: $admin-text-primary;
+        margin: 0;
+    }
+
+    &__add-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 28px;
+        background: $admin-primary;
+        color: $white;
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+        border-radius: $border-radius-pill;
+        border: none;
+        text-decoration: none;
+        transition: $admin-transition;
+        cursor: pointer;
+
+        i {
+            font-size: 18px;
+        }
+
+        &:hover {
+            background: $primary-green-dark;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(25, 135, 84, 0.4);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    // ===== CARD CONTAINER =====
+    &__card {
+        background: $admin-card-bg;
+        border-radius: $border-radius-lg;
+        box-shadow: $shadow-base;
+        border: 1px solid $admin-border;
+        overflow: hidden;
+    }
+
+    // ===== TABLE =====
+    &__table-wrapper {
+        overflow-x: auto;
+    }
+
+    &__table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 0;
+        min-width: 900px;
+    }
+
+    &__table-head {
+        background: $color-gray-50;
+
+        th {
+            padding: 14px 20px;
+            font-size: $font-size-sm;
+            font-weight: $font-weight-semibold;
+            color: $admin-text-secondary;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            border-bottom: 1px solid $admin-border;
+            text-align: left;
+            white-space: nowrap;
+        }
+    }
+
+    &__table-body {
+        tr {
+            transition: background $transition-fast;
+
+            &:hover {
+                background: rgba(25, 135, 84, 0.03);
+            }
+        }
+    }
+
+    &__row {
+        &--empty {
+            background: transparent !important;
+        }
+    }
+
+    &__cell {
+        padding: 16px 20px;
+        border-bottom: 1px solid $admin-border;
+        font-size: $font-size-base;
+        color: $admin-text-primary;
+        vertical-align: middle;
+
+        &--id {
+            font-weight: $font-weight-semibold;
+            color: $admin-text-primary;
+            white-space: nowrap;
+        }
+
+        &--name {
+            font-weight: $font-weight-semibold;
+        }
+
+        &--desc {
+            color: $admin-text-secondary;
+            font-size: 14px;
+            max-width: 200px;
+        }
+
+        &--price {
+            font-weight: $font-weight-bold;
+            color: $admin-primary;
+            white-space: nowrap;
+        }
+
+        &--actions {
+            padding-right: 20px;
+            text-align: right;
+            white-space: nowrap;
+        }
+    }
+
+    &__image {
+        width: 60px;
+        height: 60px;
+        border-radius: $border-radius-base;
+        object-fit: cover;
+        display: block;
+        border: 1px solid $admin-border;
+    }
+
+    &__image-placeholder {
+        width: 60px;
+        height: 60px;
+        border-radius: $border-radius-base;
+        background: $color-gray-100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px dashed $admin-border;
+
+        i {
+            font-size: 24px;
+            color: $admin-text-secondary;
+        }
+    }
+
+    &__empty {
+        color: $admin-text-secondary;
+        font-style: italic;
+    }
+
+    &__empty-cell {
+        padding: 60px 20px !important;
+    }
+
+    // ===== ACTIONS =====
+    &__actions {
+        display: inline-flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: $font-weight-medium;
+        border-radius: $border-radius-base;
+        border: 1px solid $admin-border;
+        background: $white;
+        color: $admin-text-primary;
+        text-decoration: none;
+        transition: $admin-transition;
+        cursor: pointer;
+        white-space: nowrap;
+
+        &:hover {
+            border-color: currentColor;
+            background: $color-gray-50;
+        }
+
+        &--view {
+            color: $primary-blue;
+            border-color: $primary-blue;
+
+            &:hover {
+                background: $primary-blue;
+                color: $white;
+            }
+        }
+
+        &--edit {
+            color: darken($color-warning, 15%);
+            border-color: $color-warning;
+
+            &:hover {
+                background: $color-warning;
+                color: $white;
+            }
+        }
+
+        &--delete {
+            color: $color-danger;
+            border-color: $color-danger;
+
+            &:hover {
+                background: $color-danger;
+                color: $white;
+            }
+        }
+    }
+
+    &__form {
+        display: inline-flex;
+    }
+
+    // ===== PAGINATION =====
+    &__pagination {
+        padding: 16px 20px;
+        border-top: 1px solid $admin-border;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+// ===== EMPTY STATE (переиспользуемый) =====
+.admin-empty-state {
+    text-align: center;
+    color: $admin-text-secondary;
+
+    &__icon {
+        font-size: 64px;
+        display: block;
+        margin-bottom: 16px;
+        opacity: 0.4;
+    }
+
+    &__text {
+        font-size: 16px;
+        margin: 0;
+        font-weight: $font-weight-medium;
+    }
+}
+
+// ===== ALERT (переиспользуемый) =====
+.admin-alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-radius: $border-radius-lg;
+    margin-bottom: 25px;
+
+    &--success {
+        background: $color-success-bg;
+        border-left: 1px solid $color-success;
+    }
+
+    &--error {
+        background: $color-danger-bg;
+        border-left: 1px solid $color-danger;
+    }
+
+    &__text {
+        color: $admin-text-primary;
+        font-size: 15px;
+        font-weight: $font-weight-medium;
+    }
+
+    &__close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: inherit;
+        cursor: pointer;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        opacity: 0.7;
+        transition: $admin-transition;
+
+        &:hover {
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+// ===== BADGE (переиспользуемый) =====
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: $border-radius-pill;
+    font-size: 12px;
+    font-weight: $font-weight-semibold;
+    line-height: 1;
+
+    &--info {
+        background: $color-info-bg;
+        color: $color-info-text;
+    }
+
+    &--success {
+        background: $color-success-bg;
+        color: $color-success-text;
+    }
+
+    &--warning {
+        background: $color-warning-bg;
+        color: $color-warning-text;
+    }
+
+    &--danger {
+        background: $color-danger-bg;
+        color: $color-danger-text;
+    }
+}
+
+// ===== RESPONSIVE =====
+@media (max-width: $breakpoint-lg) {
+    .admin-rooms__table {
+        min-width: 800px;
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .admin-rooms__header {
+        padding: 0 16px;
+    }
+
+    .admin-rooms__card {
+        margin: 0 16px;
+        border-radius: $border-radius-lg;
+    }
+
+    .admin-rooms__cell {
+        padding: 14px 16px;
+        font-size: 14px;
+    }
+
+    .admin-rooms__image,
+    .admin-rooms__image-placeholder {
+        width: 50px;
+        height: 50px;
+    }
+
+    .admin-rooms__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-rooms__btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .admin-rooms__pagination {
+        padding: 12px 16px;
+    }
+}
+
+// =====================================================
+// ADMIN ROOM FORM (CREATE/EDIT)
+// =====================================================
+
+.admin-room-form {
+    // ===== HEADER =====
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 15px;
+
+        @media (max-width: $breakpoint-md) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__title {
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-bold;
+        color: $admin-text-primary;
+        margin: 0;
+    }
+
+    &__back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 24px;
+        background: transparent;
+        border: 1px solid $admin-border;
+        border-radius: $border-radius-pill;
+        color: $admin-text-secondary;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        text-decoration: none;
+        transition: $admin-transition;
+
+        &:hover {
+            border-color: $admin-primary;
+            color: $admin-primary;
+            background: rgba(25, 135, 84, 0.05);
+        }
+    }
+
+    // ===== GRID LAYOUT =====
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 24px;
+
+        @media (max-width: $breakpoint-xl) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__sidebar {
+        position: relative;
+
+        .admin-card--sidebar {
+            position: sticky;
+            top: 20px;
+        }
+    }
+
+    // ===== ACTIONS =====
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+}
+
+// ===== AMENITIES GRID =====
+.admin-amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+
+    @media (max-width: $breakpoint-sm) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.admin-amenities__item {
+    // container for checkbox items
+}
+
+// ===== CHECKBOX (CUSTOM) =====
+.admin-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: $color-white;
+    border: 1px solid $admin-border;
+    border-radius: $border-radius-base;
+    cursor: pointer;
+    transition: $admin-transition;
+
+    &:hover {
+        border-color: $admin-primary;
+        background: rgba(25, 135, 84, 0.03);
+    }
+
+    &:has(.admin-checkbox:checked) {
+        border-color: $admin-primary;
+        background: rgba(25, 135, 84, 0.08);
+    }
+}
+
+.admin-checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: $admin-primary;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.admin-checkbox__text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $admin-text-primary;
+
+    i {
+        font-size: 16px;
+        color: $admin-primary;
+    }
+}
+
+// ===== IMAGE PREVIEW =====
+.admin-image-preview {
+    margin-top: 16px;
+    border-radius: $border-radius-base;
+    overflow: hidden;
+    border: 1px solid $admin-border;
+
+    &__img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: $border-radius-base;
+
+        &--current {
+            margin-bottom: 16px;
+            max-height: 200px;
+            object-fit: cover;
+        }
+    }
+}
+
+// ===== FORM CARD =====
+.admin-card {
+    &--form {
+        background: $admin-card-bg;
+        border-radius: $border-radius-lg;
+        padding: 24px;
+        box-shadow: $shadow-base;
+        border: 1px solid $admin-border;
+    }
+
+    &--sidebar {
+        background: $admin-card-bg;
+        border-radius: $border-radius-lg;
+        padding: 24px;
+        box-shadow: $shadow-base;
+        border: 1px solid $admin-border;
+    }
+
+    &__subtitle {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-semibold;
+        color: $admin-text-primary;
+        margin: 0 0 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid $admin-border;
+    }
+}
+
+// ===== FORM FIELDS =====
+.admin-form {
+    &__field {
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__label {
+        display: block;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $admin-text-primary;
+        margin-bottom: 8px;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: $font-size-base;
+        color: $admin-text-primary;
+        background: $color-white;
+        border: 1px solid $admin-border;
+        border-radius: $border-radius-base;
+        transition: $admin-transition;
+
+        &:focus {
+            outline: none;
+            border-color: $admin-primary;
+            box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
+        }
+
+        &--invalid {
+            border-color: $color-danger;
+
+            &:focus {
+                box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.15);
+            }
+        }
+    }
+
+    &__textarea {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: $font-size-base;
+        color: $admin-text-primary;
+        background: $color-white;
+        border: 1px solid $admin-border;
+        border-radius: $border-radius-base;
+        transition: $admin-transition;
+        resize: vertical;
+        font-family: inherit;
+
+        &:focus {
+            outline: none;
+            border-color: $admin-primary;
+            box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
+        }
+
+        &--medium {
+            min-height: 120px;
+        }
+    }
+
+    &__input-file {
+        width: 100%;
+        padding: 10px 0;
+        font-size: $font-size-sm;
+        color: $admin-text-primary;
+
+        &::file-selector-button {
+            padding: 8px 16px;
+            margin-right: 12px;
+            background: $color-gray-50;
+            border: 1px solid $admin-border;
+            border-radius: $border-radius-base;
+            font-size: $font-size-sm;
+            font-weight: $font-weight-medium;
+            color: $admin-text-primary;
+            cursor: pointer;
+            transition: $admin-transition;
+
+            &:hover {
+                background: $color-gray-100;
+                border-color: $admin-primary;
+                color: $admin-primary;
+            }
+        }
+    }
+
+    &__hint {
+        display: block;
+        font-size: 12px;
+        color: $admin-text-secondary;
+        margin-top: 6px;
+
+        &--block {
+            display: block;
+            margin-bottom: 16px;
+        }
+    }
+
+    &__error {
+        display: block;
+        font-size: 13px;
+        color: $color-danger;
+        margin-top: 6px;
+    }
+}
+
+// ===== BUTTONS (дополнение) =====
+.admin-btn {
+    &--success {
+        background: $admin-primary;
+        color: $white;
+
+        &:hover {
+            background: $primary-green-dark;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(25, 135, 84, 0.4);
+        }
+    }
+
+    &--full {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+// ===== ALERT (дополнение) =====
+.admin-alert {
+    &--error {
+        background: $color-danger-bg;
+        border-left: 1px solid $color-danger;
+    }
+
+    &__list {
+        margin: 0;
+        padding-left: 20px;
+        font-size: $font-size-sm;
+        color: $color-danger-text;
+
+        li {
+            margin-bottom: 4px;
+        }
+    }
+}
+
+// ===== RESPONSIVE =====
+@media (max-width: $breakpoint-xl) {
+    .admin-room-form__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-room-form__sidebar {
+        .admin-card--sidebar {
+            position: static;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .admin-room-form__header {
+        padding: 0 16px;
+    }
+
+    .admin-card--form,
+    .admin-card--sidebar {
+        margin: 0 16px;
+        border-radius: $border-radius-lg;
+        padding: 20px;
+    }
+
+    .admin-amenities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-room-form__actions {
+        .admin-btn {
+            padding: 14px 20px;
+        }
+    }
+}
+
+// ===== ДОПОЛНЕНИЯ ДЛЯ УСЛУГ =====
+
+// Row/Col для форм (услуги)
+.admin-room-form {
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+
+        @media (max-width: $breakpoint-sm) {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+    }
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+// Badge secondary
+.admin-badge {
+    &--secondary {
+        background: $color-secondary-bg;
+        color: $color-secondary-text;
+    }
+}
+
+// Image placeholder text
+.admin-rooms__image-placeholder {
+    span {
+        font-size: 12px;
+        color: $admin-text-secondary;
+    }
+}

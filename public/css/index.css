@@ -1,0 +1,208 @@
+.carousel {
+    height: 400px;
+    position: relative;
+    width: 92%;
+    overflow: hidden;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.carousel-inner {
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    width: calc(100% - 40px);
+}
+
+.carousel-caption h3 {
+    margin: 0 0 5px;
+    font-size: 24px;
+}
+
+.carousel-caption p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 1000;
+    transition: background-color 0.3s;
+    width: 46px;
+    height: 46px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 22px;
+}
+
+.carousel-control:hover {
+    background-color: rgba(3, 3, 3, 0.884);
+}
+
+.carousel-control.prev {
+    left: 10px;
+    padding: 0px 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-control.next {
+    right: 10px;
+    padding: 0px 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.descript {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 92%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.descript p {
+    font-size: 1.6em;
+    color: #333;
+    line-height: 1.6;
+}
+
+.faq{
+    width: 100%;
+    padding: 0px 100px 0px 200px;
+}
+.faq-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 30px 0px 30px 0px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.faq-question {
+    cursor: pointer;
+    padding: 20px 25px;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: #111827;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-left: 4px solid #1db954;
+    transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+    background-color: #1db9541a;
+}
+
+.faq-answer {
+    padding: 0 25px;
+    font-size: 1.5rem;
+    color: #4b5563;
+    line-height: 1.6;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    opacity: 1;
+    padding: 20px 25px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .icon {
+    transform: rotate(180deg);
+}
+
+/* Адаптивка */
+@media (max-width: 768px) {
+    .carousel {
+        height: 250px;
+    }
+
+    .carousel-item img {
+        height: 250px;
+        width: 100%;
+    }
+
+    .carousel-caption {
+        bottom: 10px;
+        left: 10px;
+        padding: 10px;
+        font-size: 14px;
+        width: calc(100% - 20px);
+    }
+
+    .carousel-caption h3 {
+        font-size: 18px;
+    }
+
+    .carousel-caption p {
+        font-size: 14px;
+    }
+
+    .carousel-control {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+
+    .carousel-control.prev,
+    .carousel-control.next {
+        padding: 0;
+    }
+
+    .faq{
+        width: 100%;
+        margin: 0px 0px 0px 0px;
+    }
+}

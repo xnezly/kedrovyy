@@ -1,0 +1,244 @@
+@use "variables" as *;
+@use "logo";
+@use "adaptive";
+@use "btn";
+@use "cards";
+@use "footer";
+@use "nav";
+@use "animate";
+@use "header";
+@use "about";
+@use "booking";
+@use "contacts";
+@use "room-show";
+@use "auth";
+@use "cabinet";
+@use "booking-create";
+* {
+    margin: 0px;
+    padding: 0;
+    font-family: Roboto;
+    font-size: 10px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.form-floating > label {
+    color: #6c757d;
+}
+
+.form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
+.form-control.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+.content-section h2 {
+    color: #212529;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+h1, h2 {
+    font-size: 3.2rem;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.sub-text {
+    color: $text-muted;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.about__container {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.about {
+    &__img {
+        border-radius: 10px;
+        width: 90%;
+    }
+
+    &__text {
+        width: 90%;
+        padding: 1rem;
+
+        & h5 {
+            font-weight: 700;
+            font-size: 2rem;
+        }
+
+        & p {
+            font-size: 1.6rem;
+        }
+
+        &:nth-child(odd) {
+            border-right: 3px solid $primary-green-dark;
+        }
+
+        &:nth-child(even) {
+            border-left: 3px solid $primary-green-dark;
+        }
+    }
+}
+
+.gallery-row {
+    margin: 2rem 0;
+}
+
+.gallery-img {
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.02);
+}
+
+.gallery-text {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0 12px 12px 0;
+    border-left: 4px solid var(--primary-green);
+}
+
+.gallery-text h5 {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #212529;
+}
+
+.gallery-text p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.hover-text-success:hover {
+    color: #28a745 !important;
+    text-decoration: underline !important;
+}
+
+.hover-text-success:hover {
+    color: #28a745 !important;
+    text-decoration: underline !important;
+}
+
+//карта проезда
+.map-container iframe {
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+}
+
+.map-container:hover iframe {
+    filter: grayscale(0%);
+}
+
+// услуги
+.service-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.service-icon svg {
+    transition: transform 0.2s ease;
+}
+
+.service-card:hover .service-icon svg {
+    transform: scale(1.1);
+}
+
+.pagination {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination__list {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination__item a,
+.pagination__item span {
+    display: block;
+    padding: 0.5rem 0.85rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #334155;
+    background: #fff;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    user-select: none;
+    font-size: 1.3rem;
+}
+
+.pagination__item a:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.pagination__item--active span {
+    background: $primary-green;
+    color: #fff;
+    cursor: default;
+}
+
+.pagination__item--disabled span {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: #f8fafc;
+}
+
+.pagination__item--dots span {
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    cursor: default;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 640px) {
+    .pagination__item a,
+    .pagination__item span {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.875rem;
+    }
+}
+
+
+
+
+
+
+

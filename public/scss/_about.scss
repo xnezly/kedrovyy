@@ -1,0 +1,108 @@
+@use "variables" as *;
+
+.desc{
+    &__container {
+        display: flex;
+        flex-direction: column;
+        padding: 5rem;
+        width: 50%;
+        margin: 2rem auto;
+        box-shadow: 0 2px 5px rgba($text-muted, .15);
+        border: 1px solid rgba($text-muted, .25);
+        border-radius: 2rem;
+    }
+
+    &__header{
+        text-align: left;
+        font-weight: 700;
+        font-size: 3.2rem;
+    }
+
+    &__text{
+        font-size: 1.6rem;
+        color: $text-muted;
+        line-height: 2;
+    }
+}
+
+.features-list,
+.activities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.features-list {
+    &__item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: .5rem;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #28a745;
+        font-size: 16px;
+        margin-right: 12px;
+        line-height: 2;
+    }
+
+    &__text {
+        font-size: 16px;
+        color: $text-muted;
+        line-height: 2;
+    }
+}
+
+.activities-list {
+    &__item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: .5rem;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #28a745;
+        font-size: 20px;
+        margin-right: 12px;
+        line-height: 2;
+    }
+
+    &__text {
+        font-size: 1.6rem;
+        color: $text-muted;
+        line-height: 2;
+    }
+}
+
+.review{
+    margin-bottom: 2rem;
+    &__text{
+        font-size: 1.6rem;
+        font-style: italic;
+        line-height: 2;
+        color: $text-muted;
+    }
+
+    &__author{
+        display: block;
+        width: 100%;
+        font-size: 1.6rem;
+        line-height: 2;
+        text-align: left;
+        color: $primary-green;
+    }
+}
+
+

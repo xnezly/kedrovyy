@@ -1,0 +1,154 @@
+
+// ----- ЦВЕТА -----
+$primary-green: #198754;
+$primary-green-dark: #146c43;
+$primary-blue: #0d6efd;
+$white: #ffffff;
+$color-gray-50: #f8f9fa;
+$color-gray-100:  #f1f3f5;
+$color-gray-200: #e9ecef;
+$color-gray-300: #dee2e6;
+$color-gray-400: #ced4da;
+$color-gray-500: #adb5bd;
+$color-gray-600: #6c757d;
+$color-gray-700: #495057;
+$color-gray-800: #343a40;
+$color-gray-900: #212529;
+$color-secondary: #6c757d;      // Основной серый цвет
+$color-secondary-bg: #e9ecef;   // Светлый фон (для бейджей, кнопок)
+$color-secondary-text: #495057; // Тёмный текст (для контраста на светлом фоне)
+
+// Семантические цвета
+$color-success: #198754;
+$color-success-bg: #d1e7dd;
+$color-success-text: #0a5d3a;
+$color-warning: #ffc107;
+$color-warning-bg: #fff3cd;
+$color-warning-text: #856404;
+$color-danger: #dc3545;
+$color-danger-bg: #f8d7da;
+$color-danger-text: #721c24;
+$color-info: #0dcaf0;
+$color-info-bg: #cff4fc;
+$color-info-text: #055160;
+
+// Нейтральные цвета
+$text-primary: #212529;
+$text-secondary: #6c757d;
+$text-muted: #6c757d;
+$border-color: #dee2e6;
+$bg-body: #f8f9fa;
+$bg-card: #ffffff;
+$bg-sidebar: #1e293b;
+$bg-sidebar-hover: #334155;
+$bg-sidebar-active: rgba(25, 135, 84, 0.15);
+$grey: #212529;
+
+
+// ----- ТИПОГРАФИКА -----
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-size-base: 14px;
+$font-size-sm: 12px;
+$font-size-lg: 16px;
+$font-size-xl: 18px;
+$font-size-2xl: 20px;
+$font-size-3xl: 24px;
+$font-size-4xl: 28px;
+$font-size-5xl: 32px;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// ----- ОТСТУПЫ -----
+$spacer: 1rem;
+
+// ----- РАЗМЕРЫ -----
+$admin-sidebar-width: 280px;
+$input-height-base: 56px;
+
+// ----- ГРАНИЦЫ И СКРУГЛЕНИЯ -----
+$border-radius-sm: 8px;
+$border-radius-base: 10px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-2xl: 20px;
+$border-radius: 30px;
+$border-radius-pill: 50px;
+
+// ----- ТЕНИ -----
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+$shadow-base: 0 4px 20px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+// ----- АНИМАЦИИ -----
+$transition-base: all 0.2s ease;
+$transition-smooth: all 0.25s ease;
+$transition-fast: all 0.15s ease;
+
+// ----- БРЕЙКПОИНТЫ -----
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// ----- Z-INDEX -----
+$z-index-sidebar: 1030;
+$z-index-overlay: 1025;
+$z-index-modal: 1050;
+
+// ----- DASHBOARD ---
+$dashboard-bg: #f8f9fa;
+$dashboard-card-bg: #ffffff;
+$dashboard-text-primary: #212529;
+$dashboard-text-secondary: #6c757d;
+$dashboard-border: #dee2e6;
+$dashboard-primary: #198754;
+$dashboard-primary-hover: #146c43;
+$dashboard-warning: #ffc107;
+$dashboard-success: #198754;
+$dashboard-danger: #dc3545;
+$dashboard-info: #0dcaf0;
+$dashboard-radius: 20px;
+$dashboard-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+$dashboard-transition: all 0.25s ease;
+
+// ----BOOKING----
+$booking-bg: $bg-body;
+$booking-card-bg: $bg-card;
+$booking-text-primary: $text-primary;
+$booking-text-secondary: $text-secondary;
+$booking-border: $border-color;
+$booking-primary: $primary-green;
+$booking-primary-hover: $primary-green-dark;
+$booking-danger: $color-danger;
+$booking-success-bg: $color-success-bg;
+$booking-radius: $border-radius-2xl;
+$booking-shadow: $shadow-lg;
+$booking-input-height: $input-height-base;
+$booking-transition: $transition-smooth;
+
+
+$color-primary: $primary-green;
+$color-primary-hover: $primary-green-dark;
+$color-text: #333;
+$color-text-muted: #666;
+$color-bg-light: #f8f9fa;
+$color-border: #e0e0e0;
+$color-white: #fff;
+$color-error: #dc3545;
+
+$border-radius-pill: 50px;
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 40px;
+
+$font-base: 16px;
+$font-sm: 14px;
+$font-lg: 20px;
+$font-xl: 28px;

@@ -1,0 +1,256 @@
+@use "variables" as *;
+
+// === Variables ===
+
+
+// === Main Block ===
+.booking {
+    padding: $spacing-xl 0;
+    background-color: $color-bg-light;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.booking__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+}
+
+.booking__wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+// === Header ===
+.booking__header {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+}
+
+.booking__title {
+    font-size: $font-xl;
+    font-weight: 700;
+    color: $color-text;
+    margin: 0 0 $spacing-sm;
+}
+
+.booking__subtitle {
+    font-size: $font-base;
+    color: $color-text-muted;
+    margin: 0;
+}
+
+
+
+// === Form Card ===
+.booking__form-card {
+    background: $color-white;
+    border-radius: $border-radius;
+    box-shadow: $shadow-sm;
+    padding: $spacing-lg;
+    margin-bottom: $spacing-xl;
+}
+
+.booking__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking__form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-md;
+    align-items: end;
+}
+
+.booking__form-group {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    &--button {
+        grid-column: span 1;
+
+        @media (min-width: 768px) {
+            grid-column: auto;
+        }
+    }
+}
+
+.booking__form-label {
+    font-size: $font-sm;
+    font-weight: 600;
+    color: $color-text;
+}
+
+.booking__form-input {
+    padding: $spacing-md;
+    font-size: $font-base;
+    border: 1px solid $color-border;
+    border-radius: $border-radius;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:focus {
+        outline: none;
+        border-color: $color-primary;
+        box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+    }
+}
+
+.booking__form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+    background: $color-primary;
+    color: $color-white;
+    font-size: $font-base;
+    font-weight: 600;
+    border: none;
+    border-radius: $border-radius-pill;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+
+    &:hover {
+        background: $color-primary-hover;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+.booking__form-submit-icon {
+    font-size: $font-sm;
+}
+
+// === Results ===
+.booking__results {
+    margin-bottom: $spacing-xl;
+}
+
+.booking__results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $color-border;
+}
+
+.booking__results-title {
+    font-size: $font-base;
+    font-weight: 600;
+    color: $color-text;
+    margin: 0;
+}
+
+.booking__results-badge {
+    padding: $spacing-sm $spacing-md;
+    background: $color-primary;
+    color: $color-white;
+    font-size: $font-sm;
+    font-weight: 600;
+    border-radius: $border-radius-pill;
+}
+
+.booking__results-date{
+    font-size: 1.4rem;
+    color: $primary-green;
+}
+
+
+// === No Rooms ===
+.booking__no-rooms {
+    text-align: center;
+    padding: $spacing-xl $spacing-md;
+    background: $color-white;
+    border-radius: $border-radius;
+    box-shadow: $shadow-sm;
+}
+
+.booking__no-rooms-icon {
+    font-size: 64px;
+    margin-bottom: $spacing-md;
+    opacity: 0.6;
+}
+
+.booking__no-rooms-title {
+    font-size: $font-lg;
+    font-weight: 700;
+    color: $color-text;
+    margin: 0 0 $spacing-sm;
+}
+
+.booking__no-rooms-text {
+    font-size: $font-base;
+    color: $color-text-muted;
+    margin: 0 0 $spacing-lg;
+}
+
+// === Spinner & Error ===
+.booking__spinner-wrapper {
+    text-align: center;
+    padding: $spacing-xl 0;
+}
+
+.booking__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba($color-primary, 0.2);
+    border-top-color: $color-primary;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto $spacing-md;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.booking__spinner-text {
+    color: $color-text-muted;
+    font-size: $font-sm;
+}
+
+.booking__error {
+    padding: $spacing-md;
+    background: rgba($color-error, 0.1);
+    border: 1px solid $color-error;
+    border-radius: $border-radius;
+    color: $color-error;
+    font-size: $font-sm;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+}
+
+.booking__error-icon {
+    font-size: $font-lg;
+}
+
+// === Responsive ===
+@media (max-width: 767px) {
+    .booking__form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .booking__results-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .booking__room-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $spacing-sm;
+    }
+
+    .booking__room-nights {
+        text-align: left;
+    }
+}

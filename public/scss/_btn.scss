@@ -1,0 +1,93 @@
+@use "variables" as *;
+
+a{
+    display: block;
+    text-decoration: none !important;
+}
+
+.btn, .button{
+    padding: 1rem 3em;
+    text-align: center;
+
+    &--success-pill{
+        background-color: $primary-green;
+        color: $white;
+        transition: background-color .4s ease-in-out;
+        border-radius:$border-radius;
+
+
+        &:hover{
+            background-color: $primary-green-dark;
+        }
+    }
+
+    &--outline-pill{
+        border: 1px solid $primary-green;
+        color: $primary-green;
+        transition: all .4s ease-in-out;
+        border-radius:$border-radius;
+
+
+        &:hover{
+            background-color: $primary-green;
+            color: $white;
+        }
+    }
+
+    &--danger{
+        background-color: $white;
+        border:1px solid $color-danger;
+        transition: all .4s ease-in-out;
+        border-radius: $border-radius;
+
+        &:hover{
+            background-color: $color-danger;
+        }
+    }
+}
+
+.button-close{
+    background-color: $primary-green;
+    color: $white;
+    border: none;
+    margin: 0 10px;
+}
+
+.promo-bar{
+    position: relative !important;
+}
+
+.promo-bar button{
+    position: absolute;
+    right: 10px;
+}
+
+
+.btn-outline-success:hover {
+    background: #198754;
+    color: #fff;
+}
+
+.btn-outline-danger:hover {
+    background: #dc3545;
+    color: #fff;
+}
+
+/* Анимация иконки выхода */
+.btn-outline-danger svg {
+    transition: transform 0.2s ease;
+}
+
+.btn-outline-danger:hover svg {
+    transform: translateX(3px);
+}
+
+.auth-buttons{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.auth-buttons-nav{
+    display: none;
+}

@@ -1,0 +1,247 @@
+// Variables based on the design
+$color-primary: #2d8a5e;
+$color-primary-dark: #1f6b45;
+$color-primary-light: #4CAF50;
+$color-bg: #f8f9fa;
+$color-white: #ffffff;
+$color-text: #333333;
+$color-text-light: #777777;
+$color-border: #e0e0e0;
+$color-star-empty: #ddd;
+$color-star-filled: #ffc107;
+$border-radius: 25px;
+$border-radius-sm: 12px;
+$shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+$shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+$transition: all 0.3s ease;
+
+
+.reviews {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+    &__container{
+        background-color: #f8f9fa !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100vw !important;
+    }
+
+    &__form {
+        background: $color-white;
+        border-radius: $border-radius-sm;
+        padding: 30px;
+        box-shadow: $shadow;
+        margin-bottom: 40px;
+    }
+
+    &__title {
+        font-size: 24px;
+        color: $color-text;
+        margin-bottom: 25px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    &__rating {
+        margin-bottom: 20px;
+
+        &-label {
+            display: block;
+            font-size: 18px;
+            color: $color-text;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        &-stars {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        &-star {
+            position: relative;
+
+            input {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            label {
+                cursor: pointer;
+                font-size: 32px;
+                color: $color-star-empty;
+                transition: $transition;
+                display: inline-block;
+
+                &:hover,
+                &:hover ~ label {
+                    color: $color-star-filled;
+                    transform: scale(1.1);
+                }
+            }
+
+            input:checked ~ label {
+                color: $color-star-filled;
+            }
+
+            // Fill stars on hover
+            &:hover ~ & label {
+                color: $color-star-filled;
+            }
+        }
+    }
+
+    &__textarea {
+        width: 100%;
+        min-height: 120px;
+        padding: 15px 20px;
+        border: 2px solid $color-border;
+        border-radius: $border-radius-sm;
+        font-size: 15px;
+        font-family: inherit;
+        resize: vertical;
+        transition: $transition;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+            box-shadow: 0 0 0 3px rgba(45, 138, 94, 0.1);
+        }
+
+        &::placeholder {
+            color: $color-text-light;
+        }
+    }
+
+    &__button {
+        display: inline-block;
+        padding: 14px 40px;
+        background: $color-primary;
+        color: $color-white;
+        border: none;
+        border-radius: $border-radius;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: $transition;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        width: 100%;
+
+        &:hover {
+            background: $color-primary-dark;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 138, 94, 0.3);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__item {
+        background: $color-white;
+        border-radius: $border-radius-sm;
+        padding: 25px;
+        box-shadow: $shadow;
+        transition: $transition;
+        animation: fadeIn 0.5s ease;
+
+        &:hover {
+            box-shadow: $shadow-hover;
+            transform: translateY(-2px);
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    &__author {
+        font-size: 18px;
+        font-weight: 600;
+        color: $color-text;
+        margin: 0;
+    }
+
+    &__rating-value {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: rgba(255, 193, 7, 0.1);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+        color: #b8860b;
+        font-size: 14px;
+
+        .star {
+            color: $color-star-filled;
+        }
+    }
+
+    &__text {
+        color: $color-text-light;
+        line-height: 1.6;
+        margin: 0;
+        font-size: 15px;
+    }
+
+    &__empty {
+        font-size: 20px;
+        text-align: center;
+        color: $color-text-light;
+        padding: 40px;
+        font-style: italic;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Responsive
+@media (max-width: 600px) {
+    .reviews {
+        padding: 20px 15px;
+
+        &__form {
+            padding: 20px;
+        }
+
+        &__rating-star label {
+            font-size: 28px;
+        }
+
+        &__button {
+            padding: 12px 30px;
+        }
+    }
+}

@@ -1,0 +1,433 @@
+:root {
+    --primary-green: #198754;
+    --primary-green-dark: #146c43;
+    --text-muted: #6c757d;
+}
+
+
+/* ===== Логотип ===== */
+.logo-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.logo-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #212529;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* ===== Навигация ===== */
+.main-nav {
+    background: #fff;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+    padding: 12px 0;
+    margin-bottom: 0;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    color: #212529;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+    padding: 5px 10px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #198754;
+}
+
+.nav-separator {
+    color: #dee2e6;
+    font-weight: 300;
+}
+
+/* Фиксированная высота для логотипа */
+.logo-wrapper img {
+    max-height: 80px;
+    width: auto;
+}
+
+/* Hover эффект для кнопок */
+.btn-outline-success:hover {
+    background: #198754;
+    color: #fff;
+}
+
+.btn-outline-danger:hover {
+    background: #dc3545;
+    color: #fff;
+}
+
+/* Анимация иконки выхода */
+.btn-outline-danger svg {
+    transition: transform 0.2s ease;
+}
+
+.btn-outline-danger:hover svg {
+    transform: translateX(3px);
+}
+
+
+/* ===== Промо-бар ===== */
+.promo-bar {
+    background: #198754 !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 10px 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.promo-bar small {
+    font-size: 0.9rem;
+}
+
+.promo-bar .btn-close {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Регистрация */
+.form-floating > label {
+    color: #6c757d;
+}
+.form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+.form-control.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+.content-section h2 {
+    color: #212529;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.room-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+    height: 100%;
+    background: #fff;
+}
+
+.room-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.room-card .card-img-top {
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 4px solid var(--primary-green);
+    transition: transform 0.3s ease;
+}
+
+.room-card:hover .card-img-top {
+    transform: scale(1.03);
+}
+
+.room-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 0.5rem;
+}
+
+.room-card .room-caption {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.room-card .room-price {
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 1.35rem;
+    margin: 0;
+}
+
+.gallery-row {
+    margin: 2rem 0;
+}
+
+.gallery-img {
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.02);
+}
+
+.gallery-text {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0 12px 12px 0;
+    border-left: 4px solid var(--primary-green);
+}
+
+.gallery-text h5 {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #212529;
+}
+
+.gallery-text p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.hover-text-success:hover {
+    color: #28a745 !important;
+    text-decoration: underline !important;
+}
+
+.hover-text-success:hover {
+    color: #28a745 !important;
+    text-decoration: underline !important;
+}
+
+.map-container iframe {
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+}
+
+.map-container:hover iframe {
+    filter: grayscale(0%);
+}
+
+
+.service-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
+}
+
+.service-icon svg {
+    transition: transform 0.2s ease;
+}
+
+.service-card:hover .service-icon svg {
+    transform: scale(1.1);
+}
+
+
+/* ===== Футер ===== */
+.site-footer {
+    background: #2c2c2c;
+    color: #e9ecef;
+    margin-top: 4rem;
+}
+
+.footer-title {
+    color: #198754 !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-link {
+    color: #e9ecef;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+    margin: 0;
+}
+
+.footer-link:hover,
+.footer-link.active {
+    color: #198754;
+}
+
+/* Социальные ссылки */
+.social-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #e9ecef;
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.social-link:hover {
+    color: #198754;
+    transform: translateY(-3px);
+}
+
+.social-link svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Нижняя часть футера */
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+}
+
+.footer-bottom p {
+    color: #adb5bd;
+    font-size: 0.85rem;
+}
+
+
+@media (max-width: 767px) {
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    .nav-wrapper {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .nav-separator {
+        display: none;
+    }
+
+    .room-show-card {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 4px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: invert(1) grayscale(100);
+    }
+
+    .promo-bar .btn-close {
+        right: 10px;
+    }
+
+    .promo-bar small {
+        padding-right: 30px;
+    }
+
+    .gallery-text {
+        border-left: none;
+        border-top: 4px solid var(--primary-green);
+        border-radius: 0 0 12px 12px;
+    }
+
+    .room-card .card-img-top {
+        height: 200px;
+    }
+    .display-5, .display-6 {
+        color: #212529;
+        font-weight: 700;
+    }
+
+    .room-show-card {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 4px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: invert(1) grayscale(100);
+    }
+
+    .site-footer {
+        text-align: center;
+    }
+
+    .footer-title {
+        font-size: 1rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-content {
+        align-items: center;
+    }
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.room-card {
+    animation: fadeInUp 0.4s ease forwards;
+}
+
