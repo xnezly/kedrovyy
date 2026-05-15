@@ -456,6 +456,117 @@ a {
   align-items: center;
   justify-content: space-between;
 }
+.header__top .burger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1002;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+.header__top .burger-btn span {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+.header__top .burger-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+.header__top .burger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+.header__top .burger-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+.header__top .logo-wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+.header .main-nav {
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+}
+.header .main-nav.open {
+  max-height: 100vh;
+  transition: max-height 0.4s ease-in;
+}
+.header .main-nav .nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 15px;
+}
+.header .main-nav .nav-wrapper .nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  width: 100%;
+  text-align: center;
+}
+.header .main-nav .nav-wrapper .nav-link:hover, .header .main-nav .nav-wrapper .nav-link.active {
+  color: #28a745;
+}
+.header .main-nav .nav-wrapper .nav-separator {
+  display: none;
+}
+.header .main-nav .nav-wrapper .auth-buttons-mobile {
+  width: 100%;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .header__top {
+    display: flex;
+    justify-content: right;
+  }
+  .header__top .logo-wrapper {
+    justify-content: center;
+  }
+  .header .burger-btn {
+    display: none;
+  }
+  .header .main-nav {
+    max-height: none !important;
+    overflow: visible;
+    border-top: none;
+  }
+  .header .main-nav .nav-wrapper {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0;
+  }
+  .header .main-nav .nav-wrapper .nav-link {
+    width: auto;
+    padding: 15px 10px;
+  }
+  .header .main-nav .nav-wrapper .nav-separator {
+    display: inline-block;
+    color: #ccc;
+    margin: 0 10px;
+  }
+  .header .main-nav .nav-wrapper .auth-buttons-mobile {
+    display: none !important;
+  }
+}
 
 .desc__container {
   display: flex;
