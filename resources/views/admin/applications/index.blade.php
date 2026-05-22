@@ -144,7 +144,7 @@
                                           class="admin-actions__form">
                                         @csrf
                                         @php
-                                            $statusIcons = ['pending' => '⏳', 'confirmed' => '✅', 'cancelled' => '❌'];
+                                            $statusIcons = ['pending' => 'На рассмотрении', 'confirmed' => 'Подтерждено', 'cancelled' => 'Отменено'];
                                         @endphp
                                         <select name="status" class="admin-actions__select"
                                                 onchange="this.form.submit()" title="Изменить статус">

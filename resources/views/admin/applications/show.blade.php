@@ -29,7 +29,7 @@
                 {{-- Информация о бронировании --}}
                 <div class="admin-card admin-card--info">
                     <div class="admin-card__header">
-                        <h2 class="admin-card__title">📋 Информация о бронировании</h2>
+                        <h2 class="admin-card__title"> Информация о бронировании</h2>
                     </div>
                     <div class="admin-card__body">
                         <dl class="admin-details">
@@ -84,7 +84,7 @@
                     </div>
                 </div>
 
-                {{-- ✅ Выбранные услуги --}}
+                {{-- Выбранные услуги --}}
                 @if($application->services_count)
                     <div class="admin-card admin-card--services">
                         <div class="admin-card__header admin-card__header--with-badge">
@@ -191,7 +191,7 @@
                 {{-- Статус --}}
                 <div class="admin-card admin-card--status">
                     <div class="admin-card__header">
-                        <h2 class="admin-card__title">⚙️ Управление статусом</h2>
+                        <h2 class="admin-card__title"> Управление статусом</h2>
                     </div>
                     <div class="admin-card__body">
                         <form
@@ -205,7 +205,7 @@
                             <div class="admin-form__field">
                                 <label class="admin-form__label">Текущий статус</label>
                                 @php
-                                    $statusIcons = ['pending' => '⏳ На рассмотрении', 'confirmed' => '✅ Подтверждено', 'cancelled' => '❌ Отменено'];
+                                    $statusIcons = ['pending' => 'На рассмотрении', 'confirmed' => 'Подтверждено', 'cancelled' => 'Отменено'];
                                 @endphp
                                 <select name="status" class="admin-form__select" onchange="this.form.submit()">
                                     @foreach(\App\Enums\ApplicationStatusEnum::cases() as $status)
@@ -242,7 +242,7 @@
                 {{-- Контакты --}}
                 <div class="admin-card admin-card--contacts">
                     <div class="admin-card__header">
-                        <h2 class="admin-card__title">📞 Связаться с гостем</h2>
+                        <h2 class="admin-card__title"> Связаться с гостем</h2>
                     </div>
                     <div class="admin-card__body">
                         <div class="admin-contacts-grid">
