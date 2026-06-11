@@ -25,13 +25,8 @@
                         <div class="contacts__info-block">
                             <h3 class="contacts__info-label">Телефон</h3>
                             <p class="contacts__info-value">
-                                <a href="tel:+79021234567" class="contacts__link">
-                                    +7 (902) 123-45-67
-                                </a>
-                            </p>
-                            <p class="contacts__info-value contacts__info-value--secondary">
-                                <a href="tel:+739012345678" class="contacts__link">
-                                    +7 (39012) 3-45-67
+                                <a href="tel:+79831953745" class="contacts__link">
+                                    +7 (983) 195-37-45
                                 </a>
                             </p>
                         </div>
@@ -39,13 +34,8 @@
                         <div class="contacts__info-block">
                             <h3 class="contacts__info-label">Email</h3>
                             <p class="contacts__info-value">
-                                <a href="mailto:info@kedrovyi.ru" class="contacts__link">
-                                    info@kedrovyi.ru
-                                </a>
-                            </p>
-                            <p class="contacts__info-value contacts__info-value--secondary">
-                                <a href="mailto:booking@kedrovyi.ru" class="contacts__link">
-                                    booking@kedrovyi.ru
+                                <a href="mailto:choporov.yura@mail.ru" class="contacts__link">
+                                    choporov.yura@mail.ru
                                 </a>
                             </p>
                         </div>

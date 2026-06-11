@@ -11,30 +11,42 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Monomakh&family=Oswald:wght@200..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Yanone+Kaffeesatz:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo.png') }}">
+    <script>
+        (function () {
+            try {
+                const transitionDirection = window.sessionStorage.getItem('kedrovyy_page_transition');
+
+                if (transitionDirection === 'forward' || transitionDirection === 'back') {
+                    document.documentElement.classList.add('page-transition-entering', 'page-transition-entering--' + transitionDirection);
+                }
+            } catch (error) {
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <title>@yield('title', '')</title>
 </head>
 <body>
+<div class="page-transition-layer" id="pageTransitionLayer" aria-hidden="true"></div>
 <header class="header">
     <div class="header__top">
-        <!-- Кнопка Бургер (видна только на мобильных) -->
         <button class="burger-btn d-lg-none" id="burgerBtn" aria-label="Открыть меню">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <!-- Логотип по центру -->
         <div class="logo-wrapper text-center flex-grow-1">
             <a href="/">
                 <img src="{{ asset('img/logo.png') }}" alt="Кедровый" style="max-height: 200px;">
             </a>
         </div>
 
-        <!-- Кнопки входа/регистрации (только на десктопе) -->
         <div class="auth-buttons d-none d-lg-flex align-items-center gap-3">
             @guest()
                 <a href="/login" class="button btn--outline-pill">Вход</a>
@@ -64,11 +76,9 @@
         </div>
     </div>
 
-    <!-- Навигационное меню (скрыто на мобильных, открывается по клику) -->
     <nav class="main-nav" id="mainNav">
         <div class="container">
             <div class="nav-wrapper">
-                <!-- Основные ссылки -->
                 <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">ГЛАВНАЯ</a>
                 <span class="nav-separator">|</span>
                 <a href="/about" class="nav-link {{ request()->is('about') ? 'active' : '' }}">ОПИСАНИЕ</a>
@@ -79,7 +89,6 @@
                 <span class="nav-separator">|</span>
                 <a href="/contacts" class="nav-link {{ request()->is('contacts') ? 'active' : '' }}">КОНТАКТЫ</a>
 
-                <!-- Мобильные кнопки авторизации (внутри меню, видны только на мобильных) -->
                 <div class="auth-buttons-mobile d-lg-none w-100 border-top pt-3 mt-3 d-flex flex-column gap-2 align-items-center">
                     @guest()
                         <a href="/login" class="button btn--outline-pill w-100 text-center">Вход</a>
@@ -113,67 +122,156 @@
             </div>
         </div>
     </nav>
+    {{--
 
-    <!-- Promo Bar -->
-    <div class="promo-bar alert alert-success alert-dismissible fade show m-0 rounded-0" role="alert">
-        <div class="container text-center">
+    <div class="promo-strip" role="note">
+        <div class="container">
             <small>Специальное предложение! Скидка 10% на все номера при бронировании на 3 ночи!</small>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    --}}
 </header>
+
 <main style="flex: 1 0 auto">
     @yield('content', '')
 </main>
+
 <footer class="footer">
-    <div class="footer__nav">
-        <div class="footer__column">
-            <h5 class="footer__title">Контактная информация</h5>
-            <div class="footer__content">
-                <p class="footer__link">Информация</p>
+    <div class="footer-container">
+        <div class="footer-section footer-info">
+            <h3>Контактная информация</h3>
+            <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>
+                </svg>
+                <span class="footer-contact-text">РХ, г. Абаза, ул. Мичурина, 60</span>
+            </div>
+            <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m16.56 12.91-.45.45s-1.08 1.08-4.04-1.86c-2.95-2.94-1.87-4.01-1.87-4.01l.29-.29c.7-.7.77-1.83.15-2.65L9.37 2.86c-.76-1.02-2.24-1.16-3.11-.29L4.69 4.14c-.43.43-.72.99-.69 1.61.09 1.59.81 5 4.81 8.98 4.25 4.22 8.23 4.39 9.87 4.24a2.05 2.05 0 0 0 1.32-.67l1.42-1.42c.96-.95.69-2.59-.54-3.26l-1.91-1.04a1.88 1.88 0 0 0-2.42.33Z"/>
+                </svg>
+                <a href="tel:+79831953745" class="footer-contact-link">+7 (983) 195-37-45</a>
+            </div>
+            <div class="footer-contact-item">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M30 9.9v13.1c0 2.8-2.2 5-5 5H7c-2.8 0-5-2.2-5-5V9.9l14 8.9 14-8.9ZM16 2.2 27.2 10 16 16.8 4.8 10 16 2.2Z"/>
+                </svg>
+                <a href="mailto:choporov.yura@mail.ru" class="footer-contact-link">choporov.yura@mail.ru</a>
             </div>
         </div>
-        <div class="footer__column">
-            <h5 class="footer__title">Полезные ссылки</h5>
-            <div class="footer__content">
-                <a href="/" class="footer__link {{ request()->is('/') ? 'active' : '' }}">Главная</a>
-                <a href="/about" class="footer__link {{ request()->is('about') ? 'active' : '' }}">Описание</a>
-                <a href="/rooms" class="footer__link {{ request()->is('rooms') ? 'active' : '' }}">Номера</a>
-                <a href="/contacts" class="footer__link {{ request()->is('contacts') ? 'active' : '' }}">Контакты</a>
-            </div>
+
+        <div class="footer-section footer-links">
+            <h3>Полезные ссылки</h3>
+            <ul>
+                <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Главная</a></li>
+                <li><a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">Описание</a></li>
+                <li><a href="{{ route('rooms.index') }}" class="{{ request()->routeIs('rooms.*') ? 'active' : '' }}">Номера</a></li>
+                <li><a href="{{ route('booking') }}" class="{{ request()->routeIs('booking') ? 'active' : '' }}">Бронирование</a></li>
+                <li><a href="{{ route('contacts') }}" class="{{ request()->routeIs('contacts') ? 'active' : '' }}">Контакты</a></li>
+            </ul>
         </div>
-        <div class="footer__column">
-            <h5 class="footer__title">Мы в социальных сетях</h5>
-            <div class="footer__content">
-                <div class="social-links">
-                    <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
-                             viewBox="0 0 16 16">
-                            <path
-                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-                        </svg>
-                    </a>
-                </div>
+
+        <div class="footer-section footer-social">
+            <h3>Мы в социальных сетях</h3>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/gostevoy.dom.kedroviy?igsh=MTQ3Zmo1b3lqa2sxdA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25Z"/>
+                    </svg>
+                </a>
+                <a href="https://vk.com/gostevoy.dom.kedroviy" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12.79 17.6h1.43s.43-.05.65-.28c.2-.21.2-.61.2-.61s-.03-1.85.83-2.12c.85-.26 1.94 1.79 3.1 2.58.87.6 1.53.47 1.53.47l3.08-.04s1.6-.1.84-1.37c-.06-.1-.45-.95-2.33-2.69-1.97-1.82-1.71-1.53.67-4.7 1.45-1.93 2.03-3.1 1.85-3.6-.17-.47-1.2-.35-1.2-.35l-3.47.02s-.26-.04-.45.08c-.18.12-.3.4-.3.4s-.55 1.47-1.29 2.71c-1.56 2.62-2.18 2.75-2.44 2.58-.6-.38-.45-1.54-.45-2.37 0-2.57.39-3.64-.76-3.92-.38-.09-.66-.15-1.63-.16-1.24-.01-2.29 0-2.88.29-.39.19-.69.62-.5.64.23.03.76.14 1.03.5.35.46.34 1.49.34 1.49s.2 3.02-.47 3.4c-.46.26-1.09-.27-2.44-2.63A22.39 22.39 0 0 1 5.43 5.6s-.1-.27-.29-.41c-.22-.17-.52-.22-.52-.22l-3.3.02s-.5.01-.68.24c-.16.2-.01.6-.01.6s2.58 6.03 5.5 9.06C8.82 17.67 11.95 17.6 12.79 17.6Z"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </div>
+    <div class="footer-bottom">© {{ now()->year }} «Кедровый»</div>
+</footer>
 
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109240491', 'ym');
+<div class="promo-toast" id="promoToast" role="status" aria-live="polite">
+    <div class="promo-toast__icon" aria-hidden="true">
+        <i class="bi bi-percent"></i>
+    </div>
+    <div class="promo-toast__content">
+        <span class="promo-toast__label">РЎРїРµС†РїСЂРµРґР»РѕР¶РµРЅРёРµ</span>
+        <p class="promo-toast__text">РЎРєРёРґРєР° 10% РЅР° РІСЃРµ РЅРѕРјРµСЂР° РїСЂРё Р±СЂРѕРЅРёСЂРѕРІР°РЅРёРё РЅР° 3 РЅРѕС‡Рё!</p>
+    </div>
+    <button type="button" class="promo-toast__close" id="promoToastClose" aria-label="Р—Р°РєСЂС‹С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ">
+        <i class="bi bi-x-lg"></i>
+    </button>
+</div>
 
-        ym(109240491, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/109240491" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/burger.js') }}"></script>
-    <script src="{{ asset('js/index.js') }}"></script>
+<!-- Yandex.Metrika counter -->
+<script defer type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109240491', 'ym');
+
+    ym(109240491, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109240491" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="{{ asset('js/burger.js') }}"></script>
+<script defer src="{{ asset('js/index.js') }}"></script>
+<script defer src="{{ asset('js/page-transition.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const promoToast = document.getElementById('promoToast');
+        const promoToastClose = document.getElementById('promoToastClose');
+        const promoToastLabel = promoToast ? promoToast.querySelector('.promo-toast__label') : null;
+        const promoToastText = promoToast ? promoToast.querySelector('.promo-toast__text') : null;
+        const promoShortLabel = '\u0421\u043f\u0435\u0446\u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0435';
+        const promoCloseLabel = '\u0417\u0430\u043a\u0440\u044b\u0442\u044c \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0435';
+
+        if (promoToastLabel) {
+            promoToastLabel.textContent = promoShortLabel;
+        }
+
+        if (promoToastText) {
+            promoToastText.textContent = '\u0421\u043a\u0438\u0434\u043a\u0430 10% \u043d\u0430 \u0432\u0441\u0435 \u043d\u043e\u043c\u0435\u0440\u0430 \u043f\u0440\u0438 \u0431\u0440\u043e\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0438 \u043d\u0430 3 \u043d\u043e\u0447\u0438!';
+        }
+
+        if (!promoToast || !promoToastClose) {
+            return;
+        }
+
+        promoToastClose.setAttribute('aria-label', promoCloseLabel);
+
+        const storageKey = 'kedrovyy_promo_toast_closed';
+
+        try {
+            if (window.sessionStorage.getItem(storageKey) === '1') {
+                promoToast.remove();
+                return;
+            }
+        } catch (error) {
+        }
+
+        window.requestAnimationFrame(function () {
+            promoToast.classList.add('is-visible');
+        });
+
+        promoToastClose.addEventListener('click', function () {
+            promoToast.classList.remove('is-visible');
+
+            try {
+                window.sessionStorage.setItem(storageKey, '1');
+            } catch (error) {
+            }
+
+            window.setTimeout(function () {
+                promoToast.remove();
+            }, 280);
+        });
+    });
+</script>
 @stack('scripts')
 </body>
 </html>

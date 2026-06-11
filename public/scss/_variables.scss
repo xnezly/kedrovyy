@@ -1,7 +1,7 @@
 
-// ----- ЦВЕТА -----
+// ----- Р¦Р’Р•РўРђ -----
 $primary-green: #198754;
-$primary-green-dark: #146c43;
+$primary-green-dark: #198754;
 $primary-blue: #0d6efd;
 $white: #ffffff;
 $color-gray-50: #f8f9fa;
@@ -14,11 +14,11 @@ $color-gray-600: #6c757d;
 $color-gray-700: #495057;
 $color-gray-800: #343a40;
 $color-gray-900: #212529;
-$color-secondary: #6c757d;      // Основной серый цвет
-$color-secondary-bg: #e9ecef;   // Светлый фон (для бейджей, кнопок)
-$color-secondary-text: #495057; // Тёмный текст (для контраста на светлом фоне)
+$color-secondary: #6c757d;      // РћСЃРЅРѕРІРЅРѕР№ СЃРµСЂС‹Р№ С†РІРµС‚
+$color-secondary-bg: #e9ecef;   // РЎРІРµС‚Р»С‹Р№ С„РѕРЅ (РґР»СЏ Р±РµР№РґР¶РµР№, РєРЅРѕРїРѕРє)
+$color-secondary-text: #495057; // РўС‘РјРЅС‹Р№ С‚РµРєСЃС‚ (РґР»СЏ РєРѕРЅС‚СЂР°СЃС‚Р° РЅР° СЃРІРµС‚Р»РѕРј С„РѕРЅРµ)
 
-// Семантические цвета
+// РЎРµРјР°РЅС‚РёС‡РµСЃРєРёРµ С†РІРµС‚Р°
 $color-success: #198754;
 $color-success-bg: #d1e7dd;
 $color-success-text: #0a5d3a;
@@ -32,7 +32,7 @@ $color-info: #0dcaf0;
 $color-info-bg: #cff4fc;
 $color-info-text: #055160;
 
-// Нейтральные цвета
+// РќРµР№С‚СЂР°Р»СЊРЅС‹Рµ С†РІРµС‚Р°
 $text-primary: #212529;
 $text-secondary: #6c757d;
 $text-muted: #6c757d;
@@ -45,8 +45,8 @@ $bg-sidebar-active: rgba(25, 135, 84, 0.15);
 $grey: #212529;
 
 
-// ----- ТИПОГРАФИКА -----
-$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+// ----- РўРРџРћР“Р РђР¤РРљРђ -----
+$font-family-base: 'Ubuntu', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 $font-size-base: 14px;
 $font-size-sm: 12px;
 $font-size-lg: 16px;
@@ -60,14 +60,14 @@ $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
-// ----- ОТСТУПЫ -----
+// ----- РћРўРЎРўРЈРџР« -----
 $spacer: 1rem;
 
-// ----- РАЗМЕРЫ -----
+// ----- Р РђР—РњР•Р Р« -----
 $admin-sidebar-width: 280px;
 $input-height-base: 56px;
 
-// ----- ГРАНИЦЫ И СКРУГЛЕНИЯ -----
+// ----- Р“Р РђРќРР¦Р« Р РЎРљР РЈР“Р›Р•РќРРЇ -----
 $border-radius-sm: 8px;
 $border-radius-base: 10px;
 $border-radius-lg: 12px;
@@ -76,17 +76,17 @@ $border-radius-2xl: 20px;
 $border-radius: 30px;
 $border-radius-pill: 50px;
 
-// ----- ТЕНИ -----
+// ----- РўР•РќР -----
 $shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
 $shadow-base: 0 4px 20px rgba(0, 0, 0, 0.08);
 $shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
 
-// ----- АНИМАЦИИ -----
+// ----- РђРќРРњРђР¦РР -----
 $transition-base: all 0.2s ease;
 $transition-smooth: all 0.25s ease;
 $transition-fast: all 0.15s ease;
 
-// ----- БРЕЙКПОИНТЫ -----
+// ----- Р‘Р Р•Р™РљРџРћРРќРўР« -----
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 992px;
@@ -105,7 +105,7 @@ $dashboard-text-primary: #212529;
 $dashboard-text-secondary: #6c757d;
 $dashboard-border: #dee2e6;
 $dashboard-primary: #198754;
-$dashboard-primary-hover: #146c43;
+$dashboard-primary-hover: #198754;
 $dashboard-warning: #ffc107;
 $dashboard-success: #198754;
 $dashboard-danger: #dc3545;
@@ -152,3 +152,4 @@ $font-base: 16px;
 $font-sm: 14px;
 $font-lg: 20px;
 $font-xl: 28px;
+

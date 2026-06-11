@@ -392,6 +392,34 @@
 }
 
 // ===== BUTTONS (дополнение для админки) =====
+.admin-upload-status {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid $admin-border;
+    background: $color-gray-50;
+    color: $admin-text-secondary;
+    font-size: 13px;
+    line-height: 1.5;
+
+    &--info {
+        background: $color-gray-50;
+        color: $admin-text-secondary;
+    }
+
+    &--success {
+        background: #e8f6ee;
+        border-color: rgba(25, 135, 84, 0.2);
+        color: #17633f;
+    }
+
+    &--error {
+        background: #fff1f2;
+        border-color: rgba(220, 53, 69, 0.18);
+        color: $color-danger;
+    }
+}
+
 .admin-btn {
     display: inline-flex;
     align-items: center;

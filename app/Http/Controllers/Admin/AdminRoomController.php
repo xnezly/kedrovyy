@@ -40,7 +40,9 @@ class AdminRoomController extends Controller
             'price' => $request->price,
         ]);
 
-        $room->services()->attach($request->services);
+        if (!empty($request->services)) {
+            $room->services()->attach($request->services);
+        }
 
         if ($request->hasFile('images')) {
             $this->uploadImages($room, $request->images);
@@ -72,7 +74,7 @@ class AdminRoomController extends Controller
             'price' => $request->price,
         ]);
 
-        $room->services()->sync($request->services);
+        $room->services()->sync($request->services ?? []);
 
         if ($request->hasFile('images')) {
             $this->deleteImages($room);
@@ -108,7 +110,7 @@ class AdminRoomController extends Controller
             $imageIds[] = Image::create([
                 'name' => $imageName,
                 'path' => $path,
-            ]);
+            ])->id;
         }
 
         $room->images()->attach($imageIds);

@@ -31,7 +31,7 @@ $font-xl: 32px;
 .contacts {
     padding: $spacing-xxl 0;
     background-color: $color-bg-light;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: $font-family-base;
     color: $color-text;
 }
 

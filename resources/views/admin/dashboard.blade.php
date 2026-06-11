@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="admin-stat-card__value">
-                    {{ $applicationStatuses[$statusEnum::CONFIRMED->value] }}
+                    {{ $applicationStatuses[$statusEnum::CONFIRMED->value] ?? 0 }}
                 </div>
 
                 <div class="admin-stat-card__label">Подтверждено</div>
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="admin-stat-card__value">
-                    {{ $applicationStatuses[$statusEnum::PENDING->value] }}
+                    {{ $applicationStatuses[$statusEnum::PENDING->value] ?? 0 }}
                 </div>
 
                 <div class="admin-stat-card__label">На рассмотрении</div>

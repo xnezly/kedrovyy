@@ -28,7 +28,14 @@ class ApplicationController extends Controller
             ->applications()
             ->select('status', DB::raw('count(*) as count'))
             ->groupBy('status')
-            ->pluck('count', 'status');
+            ->pluck('count', 'status')
+            ->all();
+
+        $applicationStatuses = array_replace([
+            ApplicationStatusEnum::PENDING->value => 0,
+            ApplicationStatusEnum::CONFIRMED->value => 0,
+            ApplicationStatusEnum::CANCELLED->value => 0,
+        ], $applicationStatuses);
 
         return view('applications.index', [
             'applications' => $applications,

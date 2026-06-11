@@ -121,14 +121,19 @@
                                 class="admin-form__input-file @error('images') admin-form__input--invalid @enderror"
                                 id="images"
                                 name="images[]"
-                                accept="images/*"
+                                accept="image/*"
                                 multiple
-                                onchange="previewImage(this)"
                             >
                             @error('images')
                             <span class="admin-form__error">{{ $message }}</span>
                             @enderror
-                            <small class="admin-form__hint">JPEG, PNG, JPG (макс. 2MB)</small>
+                            @if($errors->has('images.*'))
+                                <span class="admin-form__error">{{ $errors->first('images.*') }}</span>
+                            @endif
+                            <small class="admin-form__hint">JPG, JPEG, PNG, WEBP. До 15 фото, до 10 МБ каждое, общий размер до 48 МБ.</small>
+                            <div id="imageUploadStatus" class="admin-upload-status">
+                                Выберите фотографии номера. Если файлов много, лучше загружать их партиями.
+                            </div>
                         </div>
 
                         <div id="imagePreview" class="admin-image-preview" style="display: none;">
@@ -154,15 +159,117 @@
     </div>
 
     <script>
-        function previewImage(input) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById('previewImg').src = e.target.result;
-                    document.getElementById('imagePreview').style.display = 'block';
-                }
-                reader.readAsDataURL(input.files[0]);
+        function setupRoomImageUpload(inputId, previewId, previewImgId, statusId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            const previewImg = document.getElementById(previewImgId);
+            const status = document.getElementById(statusId);
+
+            if (!input || !preview || !previewImg || !status) {
+                return;
             }
+
+            const limits = {
+                maxFiles: 15,
+                maxFileSize: 10 * 1024 * 1024,
+                maxTotalSize: 48 * 1024 * 1024,
+            };
+
+            function formatBytes(bytes) {
+                if (bytes < 1024 * 1024) {
+                    return Math.round(bytes / 1024) + ' КБ';
+                }
+
+                return (bytes / (1024 * 1024)).toFixed(1).replace('.', ',') + ' МБ';
+            }
+
+            function setStatus(message, type) {
+                status.textContent = message;
+                status.className = 'admin-upload-status admin-upload-status--' + type;
+            }
+
+            function validateFiles(files) {
+                if (!files.length) {
+                    return null;
+                }
+
+                if (files.length > limits.maxFiles) {
+                    return 'Можно выбрать не более 15 фотографий за один раз.';
+                }
+
+                let totalSize = 0;
+
+                for (const file of files) {
+                    totalSize += file.size;
+
+                    if (!file.type.startsWith('image/')) {
+                        return 'Все выбранные файлы должны быть изображениями.';
+                    }
+
+                    if (file.size > limits.maxFileSize) {
+                        return 'Файл "' + file.name + '" больше 10 МБ. Уменьшите его размер.';
+                    }
+                }
+
+                if (totalSize > limits.maxTotalSize) {
+                    return 'Общий размер выбранных файлов слишком большой. Загружайте примерно до 48 МБ за один раз.';
+                }
+
+                return null;
+            }
+
+            function previewImage(input) {
+                if (input.files && input.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = function (event) {
+                        previewImg.src = event.target.result;
+                        preview.style.display = 'block';
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    preview.style.display = 'none';
+                    previewImg.src = '';
+                }
+            }
+
+            function handleFiles() {
+                const files = Array.from(input.files || []);
+                const error = validateFiles(files);
+
+                if (error) {
+                    input.value = '';
+                    previewImage(input);
+                    setStatus(error, 'error');
+                    return false;
+                }
+
+                previewImage(input);
+
+                if (!files.length) {
+                    setStatus('Выберите фотографии номера. Если файлов много, лучше загружать их партиями.', 'info');
+                    return true;
+                }
+
+                const totalSize = files.reduce((sum, file) => sum + file.size, 0);
+                setStatus('Выбрано ' + files.length + ' фото. Общий размер: ' + formatBytes(totalSize) + '.', 'success');
+
+                return true;
+            }
+
+            input.addEventListener('change', handleFiles);
+
+            input.form?.addEventListener('submit', function (event) {
+                if (!handleFiles()) {
+                    event.preventDefault();
+                    input.focus();
+                }
+            });
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setupRoomImageUpload('images', 'imagePreview', 'previewImg', 'imageUploadStatus');
+        });
     </script>
 @endsection

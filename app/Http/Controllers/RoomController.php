@@ -22,12 +22,31 @@ class RoomController extends Controller
     // Просмотр номера
     public function show(Room $room): View
     {
-        $room->load('services');
-        $reviews = $room->reviews()->latest()->get();
+        $room->load([
+            'services',
+            'images' => fn ($query) => $query->orderBy('images.id'),
+        ]);
+        $reviews = $room->reviews()->with('user')->latest()->get();
+        $galleryImages = $room->images
+            ->map(fn ($image, $index) => [
+                'url' => $image->url,
+                'alt' => $room->name . ' ' . ($index + 1),
+            ])
+            ->values();
+
+        if ($galleryImages->isEmpty()) {
+            $galleryImages = collect([
+                [
+                    'url' => '/img/photo.jpg',
+                    'alt' => $room->name,
+                ],
+            ]);
+        }
 
         return view('rooms.show', [
             'room' => $room,
             'reviews' => $reviews,
+            'galleryImages' => $galleryImages,
         ]);
     }
 

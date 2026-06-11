@@ -15,7 +15,7 @@
         align-items: center;
         justify-content: space-between;
 
-        // Бургер кнопка
+        // Р‘СѓСЂРіРµСЂ РєРЅРѕРїРєР°
         .burger-btn {
             background: none;
             border: none;
@@ -51,7 +51,7 @@
         }
     }
 
-    // Навигация
+    // РќР°РІРёРіР°С†РёСЏ
     .main-nav {
         background-color: #fff;
         border-top: 1px solid #eee;
@@ -81,7 +81,7 @@
                 text-align: center;
 
                 &:hover, &.active {
-                    color: #28a745;
+                    color: #198754;
                 }
             }
 
@@ -102,7 +102,7 @@
         }
     }
 
-    // Десктоп
+    // Р”РµСЃРєС‚РѕРї
     @media (min-width: 992px) {
         &__top {
             display: flex;
@@ -129,6 +129,11 @@
                 .nav-link {
                     width: auto;
                     padding: 15px 10px;
+
+                    &:hover,
+                    &.active {
+                        color: #000;
+                    }
                 }
 
                 .nav-separator {
@@ -144,3 +149,4 @@
         }
     }
 }
+

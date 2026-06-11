@@ -4,7 +4,7 @@
     <h1>Номера</h1>
     <p class="sub-text">Выберите комфортный номер для вашего отдыха</p>
 
-    <div class="card-container">
+    <div class="card-container rooms__grid">
         @forelse($rooms as $room)
             @include('parts.room', ['room' => $room])
         @empty

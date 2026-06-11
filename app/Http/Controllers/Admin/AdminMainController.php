@@ -17,7 +17,13 @@ class AdminMainController extends Controller
     {
         $applicationStatuses = Application::select('status', DB::raw('count(*) as count'))
             ->groupBy('status')
-            ->pluck('count', 'status');
+            ->pluck('count', 'status')
+            ->all();
+
+        $applicationStatuses = array_replace([
+            ApplicationStatusEnum::PENDING->value => 0,
+            ApplicationStatusEnum::CONFIRMED->value => 0,
+        ], $applicationStatuses);
 
         $recentApplications = Application::with(['user', 'room'])
             ->latest()

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * @property int $id
@@ -25,7 +24,9 @@ class Room extends Model
 
     public function getImageUrlAttribute(): ?string
     {
-        return $this->images->isNotEmpty() ? Storage::disk('public')->url($this->images[0]->path) : null;
+        return $this->images->isNotEmpty()
+            ? '/storage/' . ltrim($this->images[0]->path, '/')
+            : null;
     }
 
     public function getFormattedPriceAttribute(): string

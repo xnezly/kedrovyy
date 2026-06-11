@@ -46,11 +46,14 @@ class MainController extends Controller
 
         $nights = $checkIn->startOfDay()->diffInDays($checkOut->startOfDay());
 
-        $rooms = Room::whereDoesntHave('applications', function (Builder $query) use ($checkIn, $checkOut) {
-            $query->whereNot('status', ApplicationStatusEnum::CANCELLED)
-                ->where('check_in', '<', $checkOut)
-                ->where('check_out', '>', $checkIn);
-        })->get();
+        $rooms = Room::with('services')
+            ->withCount('services')
+            ->whereDoesntHave('applications', function (Builder $query) use ($checkIn, $checkOut) {
+                $query->whereNot('status', ApplicationStatusEnum::CANCELLED)
+                    ->where('check_in', '<', $checkOut)
+                    ->where('check_out', '>', $checkIn);
+            })
+            ->get();
 
         return view('booking', [
             'rooms' => $rooms,

@@ -181,7 +181,7 @@
   justify-content: center;
 }
 .admin-filters__search-btn:hover {
-  background: #146c43;
+  background: #198754;
 }
 
 .admin-table-card {
@@ -250,7 +250,7 @@ th .admin-table__cell {
 }
 .admin-table__link:hover {
   text-decoration: underline;
-  color: #146c43;
+  color: #198754;
 }
 .admin-table__datetime {
   display: flex;
@@ -1528,7 +1528,7 @@ th .admin-table__cell {
   color: #ffffff;
 }
 .admin-quick-actions__btn--success:hover {
-  background: #146c43;
+  background: #198754;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(25, 135, 84, 0.4);
 }
@@ -1578,6 +1578,31 @@ th .admin-table__cell {
   color: #055160;
 }
 
+.admin-upload-status {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #f8f9fa;
+  color: #718096;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.admin-upload-status--info {
+  background: #f8f9fa;
+  color: #718096;
+}
+.admin-upload-status--success {
+  background: #e8f6ee;
+  border-color: rgba(25, 135, 84, 0.2);
+  color: #17633f;
+}
+.admin-upload-status--error {
+  background: #fff1f2;
+  border-color: rgba(220, 53, 69, 0.18);
+  color: #dc3545;
+}
+
 .admin-btn {
   display: inline-flex;
   align-items: center;
@@ -1611,7 +1636,7 @@ th .admin-table__cell {
   color: #ffffff;
 }
 .admin-btn--primary:hover {
-  background: #146c43;
+  background: #198754;
 }
 .admin-btn:disabled {
   opacity: 0.6;
@@ -1744,7 +1769,7 @@ th .admin-table__cell {
   font-size: 18px;
 }
 .admin-rooms__add-btn:hover {
-  background: #146c43;
+  background: #198754;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(25, 135, 84, 0.4);
 }
@@ -1884,7 +1909,7 @@ th .admin-table__cell {
   color: #ffffff;
 }
 .admin-rooms__btn--edit {
-  color: rgb(185.5, 139.125, 0);
+  color: #ba8b00;
   border-color: #ffc107;
 }
 .admin-rooms__btn--edit:hover {
@@ -2287,7 +2312,7 @@ th .admin-table__cell {
   color: #ffffff;
 }
 .admin-btn--success:hover {
-  background: #146c43;
+  background: #198754;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(25, 135, 84, 0.4);
 }
@@ -2743,7 +2768,7 @@ ul {
   color: #fff;
 }
 .admin-btn--primary:hover {
-  background: rgb(17.03125, 91.96875, 57.225);
+  background: #115c39;
   transform: translateY(-1px);
 }
 .admin-btn--secondary {

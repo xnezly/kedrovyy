@@ -1,11 +1,11 @@
 :root {
     --primary-green: #198754;
-    --primary-green-dark: #146c43;
+    --primary-green-dark: #198754;
     --text-muted: #6c757d;
 }
 
 
-/* ===== Логотип ===== */
+/* ===== Р›РѕРіРѕС‚РёРї ===== */
 .logo-wrapper {
     display: inline-flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
     letter-spacing: 1px;
 }
 
-/* ===== Навигация ===== */
+/* ===== РќР°РІРёРіР°С†РёСЏ ===== */
 .main-nav {
     background: #fff;
     border-top: 1px solid #e9ecef;
@@ -62,13 +62,13 @@
     font-weight: 300;
 }
 
-/* Фиксированная высота для логотипа */
+/* Р¤РёРєСЃРёСЂРѕРІР°РЅРЅР°СЏ РІС‹СЃРѕС‚Р° РґР»СЏ Р»РѕРіРѕС‚РёРїР° */
 .logo-wrapper img {
     max-height: 80px;
     width: auto;
 }
 
-/* Hover эффект для кнопок */
+/* Hover СЌС„С„РµРєС‚ РґР»СЏ РєРЅРѕРїРѕРє */
 .btn-outline-success:hover {
     background: #198754;
     color: #fff;
@@ -79,7 +79,7 @@
     color: #fff;
 }
 
-/* Анимация иконки выхода */
+/* РђРЅРёРјР°С†РёСЏ РёРєРѕРЅРєРё РІС‹С…РѕРґР° */
 .btn-outline-danger svg {
     transition: transform 0.2s ease;
 }
@@ -89,7 +89,7 @@
 }
 
 
-/* ===== Промо-бар ===== */
+/* ===== РџСЂРѕРјРѕ-Р±Р°СЂ ===== */
 .promo-bar {
     background: #198754 !important;
     color: #fff !important;
@@ -113,7 +113,7 @@
     filter: invert(1) grayscale(100%) brightness(200%);
 }
 
-/* Регистрация */
+/* Р РµРіРёСЃС‚СЂР°С†РёСЏ */
 .form-floating > label {
     color: #6c757d;
 }
@@ -128,7 +128,7 @@
 
 .content-section h2 {
     color: #212529;
-    border-bottom: 2px solid #28a745;
+    border-bottom: 2px solid #198754;
     padding-bottom: 0.5rem;
     display: inline-block;
 }
@@ -215,12 +215,12 @@
 }
 
 .hover-text-success:hover {
-    color: #28a745 !important;
+    color: #198754 !important;
     text-decoration: underline !important;
 }
 
 .hover-text-success:hover {
-    color: #28a745 !important;
+    color: #198754 !important;
     text-decoration: underline !important;
 }
 
@@ -253,7 +253,7 @@
 }
 
 
-/* ===== Футер ===== */
+/* ===== Р¤СѓС‚РµСЂ ===== */
 .site-footer {
     background: #2c2c2c;
     color: #e9ecef;
@@ -288,7 +288,7 @@
     color: #198754;
 }
 
-/* Социальные ссылки */
+/* РЎРѕС†РёР°Р»СЊРЅС‹Рµ СЃСЃС‹Р»РєРё */
 .social-links {
     display: flex;
     gap: 15px;
@@ -315,7 +315,7 @@
     height: 28px;
 }
 
-/* Нижняя часть футера */
+/* РќРёР¶РЅСЏСЏ С‡Р°СЃС‚СЊ С„СѓС‚РµСЂР° */
 .footer-bottom {
     background: rgba(0, 0, 0, 0.2);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -430,4 +430,5 @@
 .room-card {
     animation: fadeInUp 0.4s ease forwards;
 }
+
 

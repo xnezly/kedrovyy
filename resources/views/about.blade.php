@@ -1,97 +1,284 @@
 @extends('theme')
+
 @section('title', 'Описание')
+
 @section('content')
+    @php
+        $galleryImages = [
+            '6.jpg',
+            'pole.jpg',
+            '18.jpg',
+            '15.jpg',
+            '13.jpg',
+            '7.jpg',
+            '14.jpg',
+            '19.jpg',
+        ];
+    @endphp
+
     <div class="desc">
         <div class="desc__container">
-            <section class="desc__section">
-                <h2 class="desc__header">Описание</h2>
-                <p class="desc__text">
-                    Гостевой дом «Кедровый» предлагает уникальную возможность насладиться природой и комфортом.
-                    Мы располагаем уютными номерами, которые идеально подходят для отдыха с семьей или друзьями.
-                </p>
+            <section class="desc__hero">
+                <div class="desc__hero-copy">
+                    <h1 class="desc__title">Отдых в тишине, среди природы и домашнего уюта</h1>
+                    <p class="desc__lead">
+                        «Кедровый» в Абазе создан для тех, кто хочет замедлиться, подышать чистым воздухом,
+                        провести время с близкими и почувствовать настоящее спокойствие вдали от городского шума.
+                    </p>
+
+                    <div class="desc__meta">
+                        <div class="desc__meta-item">
+                            
+                            <span>Республика Хакасия, г. Абаза, рядом с лесом и живописной природой</span>
+                        </div>
+                        <div class="desc__meta-item">
+                         
+                            <span>Уютные номера, домашняя атмосфера и комфорт для семейного отдыха</span>
+                        </div>
+                        <div class="desc__meta-item">
+                           
+                            <span>Баня, беседка, прогулки, рыбалка и размеренный отдых в красивом месте</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="desc__hero-visual">
+                    <img
+                        src="{{ asset('img/dom.jpg') }}"
+                        alt="Гостевой дом Кедровый"
+                        class="desc__hero-image"
+                    >
+
+                    <div class="desc__hero-note">
+                        <span class="desc__hero-note-label">Идеально для</span>
+                        <strong class="desc__hero-note-title">семейных поездок, отдыха с друзьями и спокойных выходных</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="desc__section desc__section--intro">
+                <article class="desc-panel">
+                    <h2 class="desc-panel__title">Место, где легко выдохнуть и просто отдыхать</h2>
+                    <p class="desc-panel__text">
+                        Мы подготовили пространство, в котором приятно остановиться на выходные или на более долгий отдых.
+                        Здесь можно собраться с семьей, провести время с друзьями, устроить неспешные прогулки и
+                        наслаждаться атмосферой уюта в окружении природы.
+                    </p>
+                </article>
+
+                <article class="desc-panel">
+                    <h2 class="desc-panel__title">Абаза, лесной воздух и чувство уединения</h2>
+                    <p class="desc-panel__text">
+                        Гостевой дом находится в живописной части Абазы, где особенно чувствуется тишина,
+                        простор и близость к природе. Это отличный вариант для тех, кто хочет отдохнуть от суеты,
+                        перезагрузиться и провести время в спокойной обстановке.
+                    </p>
+                </article>
             </section>
 
             <section class="desc__section">
-                <h2 class="desc__header">Местоположение</h2>
-                <p class="desc__text">
-                    Наш гостевой дом расположен в живописном городе Абаза, всего в двух часах езды от краевого центра
-                    Республики Хакасия. Окруженный первозданной таежной природой, вы сможете насладиться тишиной и
-                    спокойствием, вдали от городской суеты.
-                </p>
-            </section>
-
-            <section class="desc__section">
-                <h2 class="desc__header">Удобства</h2>
-                <ul class="features-list">
-                    <li class="features-list__item">
-                        <span class="features-list__icon">✓</span>
-                        <span class="features-list__text">Комфортабельные номера с современными удобствами</span>
-                    </li>
-                    <li class="features-list__item">
-                        <span class="features-list__icon">✓</span>
-                        <span class="features-list__text">Бесплатный Wi-Fi на всей территории</span>
-                    </li>
-                    <li class="features-list__item">
-                        <span class="features-list__icon">✓</span>
-                        <span class="features-list__text">Кухня для самостоятельного приготовления пищи</span>
-                    </li>
-                    <li class="features-list__item">
-                        <span class="features-list__icon">✓</span>
-                        <span class="features-list__text">Парковка для автомобилей</span>
-                    </li>
-                    <li class="features-list__item">
-                        <span class="features-list__icon">✓</span>
-                        <span class="features-list__text">Баня и зона для барбекю</span>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="desc__section">
-                <h2 class="desc__header">Активности</h2>
-                <p class="desc__text">В нашем доме вы найдете множество возможностей для активного отдыха:</p>
-                <ul class="activities-list">
-                    <li class="activities-list__item">
-                        <span class="activities-list__icon">•</span>
-                        <span class="activities-list__text">Экскурсии по живописным местам региона</span>
-                    </li>
-                    <li class="activities-list__item">
-                        <span class="activities-list__icon">•</span>
-                        <span class="activities-list__text">Рыбалка на реке</span>
-                    </li>
-                    <li class="activities-list__item">
-                        <span class="activities-list__icon">•</span>
-                        <span class="activities-list__text">Охота в окрестных лесах</span>
-                    </li>
-                    <li class="activities-list__item">
-                        <span class="activities-list__icon">•</span>
-                        <span class="activities-list__text">Прогулки на катере по реке</span>
-                    </li>
-                    <li class="activities-list__item">
-                        <span class="activities-list__icon">•</span>
-                        <span class="activities-list__text">Пешие прогулки и походы по живописным тропам</span>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="desc__section">
-                <h2 class="desc__header">Отзывы гостей</h2>
-
-                <div class="review">
-                    <span class="review__author">✎ Анна и Сергей</span>
-                    <p class="review__text">
-                        «Отдыхали с семьей в гостевом доме «Кедровый» и остались в полном восторге!
-                        Прекрасная природа, уютные номера и доброжелательный персонал. Обязательно вернемся!»
+                <div class="desc__section-head">
+                    <h2 class="desc__section-title">Почему гостям здесь действительно комфортно</h2>
+                    <p class="desc__section-text">
+                        Мы постарались собрать все, что делает отдых удобным, теплым и запоминающимся.
                     </p>
                 </div>
 
-                <div class="review">
-                    <span class="review__author">✎ Игорь</span>
-                    <p class="review__text">
-                        «Замечательное место для отдыха! Мы провели незабываемые выходные, наслаждаясь
-                        рыбалкой и прогулками по лесу. Рекомендуем всем!»
+                <div class="desc-features">
+                    <article class="desc-feature">
+                        <div class="desc-feature__icon">
+                            <i class="bi bi-door-open-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="desc-feature__title">Уютные номера</h3>
+                        <p class="desc-feature__text">
+                            Комфортное размещение, продуманная обстановка и приятная атмосфера для спокойного отдыха.
+                        </p>
+                    </article>
+
+                    <article class="desc-feature">
+                        <div class="desc-feature__icon">
+                            <i class="bi bi-wifi" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="desc-feature__title">Wi-Fi на территории</h3>
+                        <p class="desc-feature__text">
+                            Интернет всегда под рукой, если нужно оставаться на связи или делиться впечатлениями.
+                        </p>
+                    </article>
+
+                    <article class="desc-feature">
+                        <div class="desc-feature__icon">
+                            <i class="bi bi-cup-hot-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="desc-feature__title">Кухня и бытовой комфорт</h3>
+                        <p class="desc-feature__text">
+                            Все необходимое, чтобы готовить еду самостоятельно и чувствовать себя как дома.
+                        </p>
+                    </article>
+
+                    <article class="desc-feature">
+                        <div class="desc-feature__icon">
+                            <i class="bi bi-p-square-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="desc-feature__title">Парковка</h3>
+                        <p class="desc-feature__text">
+                            Удобное размещение автомобиля на территории для спокойного и комфортного приезда.
+                        </p>
+                    </article>
+
+                    <article class="desc-feature">
+                        <div class="desc-feature__icon">
+                            <i class="bi bi-fire" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="desc-feature__title">Баня и зона отдыха</h3>
+                        <p class="desc-feature__text">
+                            Теплая баня и уютное место для приятных вечеров после насыщенного дня.
+                        </p>
+                    </article>
+
+                    <article class="desc-feature">
+                        <div class="desc-feature__icon">
+                            <i class="bi bi-tree-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="desc-feature__title">Природа вокруг</h3>
+                        <p class="desc-feature__text">
+                            Лес, свежий воздух и красивые виды создают ощущение настоящего отдыха от города.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="desc__section">
+                <div class="desc__section-head">
+                    <h2 class="desc__section-title">Чем можно заняться во время отдыха</h2>
+                    <p class="desc__section-text">
+                        Здесь легко выбрать ритм под себя: активный, расслабленный или что-то между ними.
                     </p>
+                </div>
+
+                <div class="desc-activities">
+                    <article class="desc-activity">
+                        <div class="desc-activity__icon">
+                            <i class="bi bi-signpost-split-fill" aria-hidden="true"></i>
+                        </div>
+                        <div class="desc-activity__content">
+                            <h3 class="desc-activity__title">Прогулки и маршруты</h3>
+                            <p class="desc-activity__text">
+                                Неспешные прогулки по живописным местам, лесным тропам и окрестностям Абазы.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="desc-activity">
+                        <div class="desc-activity__icon">
+                            <i class="bi bi-water" aria-hidden="true"></i>
+                        </div>
+                        <div class="desc-activity__content">
+                            <h3 class="desc-activity__title">Рыбалка и отдых у воды</h3>
+                            <p class="desc-activity__text">
+                                Отличный вариант для тех, кто любит спокойствие, природу и время наедине с собой.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="desc-activity">
+                        <div class="desc-activity__icon">
+                            <i class="bi bi-camera-fill" aria-hidden="true"></i>
+                        </div>
+                        <div class="desc-activity__content">
+                            <h3 class="desc-activity__title">Красивые виды и фото</h3>
+                            <p class="desc-activity__text">
+                                Территория и окрестности подходят для атмосферных кадров и теплых семейных снимков.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="desc-activity">
+                        <div class="desc-activity__icon">
+                            <i class="bi bi-moon-stars-fill" aria-hidden="true"></i>
+                        </div>
+                        <div class="desc-activity__content">
+                            <h3 class="desc-activity__title">Тихие вечера</h3>
+                            <p class="desc-activity__text">
+                                Беседка, общение, баня и неспешный отдых помогают по-настоящему перезагрузиться.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="desc__section">
+                <div class="desc__section-head">
+                    <h2 class="desc__section-title">Гости возвращаются сюда за атмосферой</h2>
+                    <p class="desc__section-text">
+                        Самое ценное для нас — когда отдых запоминается теплом, уютом и желанием вернуться снова.
+                    </p>
+                </div>
+
+                <div class="desc-reviews">
+                    <article class="desc-review">
+                        <div class="desc-review__rating">★★★★★</div>
+                        <p class="desc-review__text">
+                            «Отдыхали здесь семьей и остались в полном восторге. Очень уютно, красиво и спокойно.
+                            Природа вокруг просто замечательная, а атмосфера действительно домашняя.»
+                        </p>
+                        <span class="desc-review__author">Анна и Сергей</span>
+                    </article>
+
+                    <article class="desc-review">
+                        <div class="desc-review__rating">★★★★★</div>
+                        <p class="desc-review__text">
+                            «Отличное место для выходных. Понравились тишина, свежий воздух и возможность хорошо
+                            отдохнуть от городской суеты. Хочется приехать еще раз.»
+                        </p>
+                        <span class="desc-review__author">Игорь</span>
+                    </article>
+
+                    <article class="desc-review">
+                        <div class="desc-review__rating">★★★★★</div>
+                        <p class="desc-review__text">
+                            «Очень приятное место с теплой атмосферой. Все выглядит ухоженно, а сам отдых получился
+                            спокойным и по-настоящему душевным.»
+                        </p>
+                        <span class="desc-review__author">Марина</span>
+                    </article>
+                </div>
+            </section>
+
+            <section class="desc__section desc__section--gallery">
+                <div class="desc__section-head">
+                    <h2 class="desc__section-title">Посмотрите на атмосферу «Кедрового»</h2>
+                    <p class="desc__section-text">
+                        Несколько кадров, которые помогают почувствовать настроение дома еще до приезда.
+                    </p>
+                </div>
+
+                <div class="desc-gallery">
+                    @foreach ($galleryImages as $index => $image)
+                        <figure class="desc-gallery__item">
+                            <img
+                                src="{{ asset('img/' . $image) }}"
+                                alt="Фото гостевого дома Кедровый {{ $index + 1 }}"
+                                class="desc-gallery__image"
+                            >
+                        </figure>
+                    @endforeach
+                </div>
+            </section>
+
+            <section class="desc__cta">
+                <div class="desc__cta-copy">
+                    <h2 class="desc__cta-title">Подберите номер и запланируйте поездку в «Кедровый»</h2>
+                    <p class="desc__cta-text">
+                        Посмотрите доступные номера, оцените условия проживания и выберите вариант,
+                        который подойдет именно вам.
+                    </p>
+                </div>
+
+                <div class="desc__cta-actions">
+                    <a href="{{ route('rooms.index') }}" class="desc__cta-btn desc__cta-btn--primary">Смотреть номера</a>
+                    <a href="{{ route('contacts') }}" class="desc__cta-btn desc__cta-btn--secondary">Связаться с нами</a>
                 </div>
             </section>
         </div>
-
+    </div>
 @endsection

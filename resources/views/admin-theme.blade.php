@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo.png') }}">
     <title>@yield('title', 'Админ-панель')</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/admin.css">
@@ -101,8 +104,8 @@
 </div>
 
 <!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/admin.js?v=1"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="/js/admin.js?v=1"></script>
 
 </body>
 </html>
