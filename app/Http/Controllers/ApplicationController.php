@@ -24,6 +24,8 @@ class ApplicationController extends Controller
             ->latest()
             ->paginate(10);
 
+        $applications->getCollection()->each->syncContactSnapshotToUser();
+
         $applicationStatuses = auth()->user()
             ->applications()
             ->select('status', DB::raw('count(*) as count'))
@@ -72,6 +74,9 @@ class ApplicationController extends Controller
 
         $application = auth()->user()->applications()->create([
             'room_id' => $room->id,
+            'guest_name' => $validated['name'],
+            'guest_age' => $validated['age'] ?? null,
+            'guest_phone' => $validated['number'],
             'number_of_guests' => $validated['number_of_guests'],
             'check_in' => $validated['check_in'],
             'check_out' => $validated['check_out'],
@@ -84,7 +89,9 @@ class ApplicationController extends Controller
             $application->services()->attach($selectedServices);
         }
 
-        return redirect()->route('home');
+        return redirect()
+            ->route('applications.index')
+            ->with('success', 'Заявка на бронирование отправлена. Мы свяжемся с вами после подтверждения.');
     }
 
     // Отмена заявки

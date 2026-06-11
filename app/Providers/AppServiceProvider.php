@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Enums\ApplicationStatusEnum;
+use App\Models\Application;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,5 +24,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFour();
+
+        View::composer('admin-theme', function ($view): void {
+            $view->with('adminPendingApplicationsCount', Application::query()
+                ->where('status', ApplicationStatusEnum::PENDING->value)
+                ->count());
+        });
     }
 }

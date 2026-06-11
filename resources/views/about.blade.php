@@ -255,15 +255,59 @@
                 <div class="desc-gallery">
                     @foreach ($galleryImages as $index => $image)
                         <figure class="desc-gallery__item">
-                            <img
+                            <button
+                                type="button"
+                                class="desc-gallery__trigger"
+                                data-desc-gallery-trigger
+                                data-desc-gallery-src="{{ asset('img/' . $image) }}"
+                                data-desc-gallery-alt="Фото гостевого дома Кедровый {{ $index + 1 }}"
+                                aria-label="Открыть фото {{ $index + 1 }}"
+                            >
+                                <img
                                 src="{{ asset('img/' . $image) }}"
                                 alt="Фото гостевого дома Кедровый {{ $index + 1 }}"
                                 class="desc-gallery__image"
+                                loading="lazy"
                             >
+                            </button>
                         </figure>
                     @endforeach
                 </div>
             </section>
+
+            <div class="desc-gallery-lightbox" id="descGalleryLightbox" hidden>
+                <button
+                    type="button"
+                    class="desc-gallery-lightbox__backdrop"
+                    data-desc-gallery-close
+                    aria-label="Закрыть просмотр"
+                ></button>
+
+                <div
+                    class="desc-gallery-lightbox__dialog"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Просмотр изображения"
+                >
+                    <button
+                        type="button"
+                        class="desc-gallery-lightbox__close"
+                        data-desc-gallery-close
+                        aria-label="Закрыть просмотр"
+                    >
+                        <i class="bi bi-x-lg" aria-hidden="true"></i>
+                    </button>
+
+                    <img
+                        src=""
+                        alt=""
+                        class="desc-gallery-lightbox__image"
+                        id="descGalleryLightboxImage"
+                    >
+
+                    <p class="desc-gallery-lightbox__caption" id="descGalleryLightboxCaption"></p>
+                </div>
+            </div>
 
             <section class="desc__cta">
                 <div class="desc__cta-copy">
@@ -282,3 +326,78 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const lightbox = document.getElementById('descGalleryLightbox');
+            const lightboxImage = document.getElementById('descGalleryLightboxImage');
+            const lightboxCaption = document.getElementById('descGalleryLightboxCaption');
+            const lightboxClose = lightbox?.querySelector('.desc-gallery-lightbox__close');
+            const triggers = document.querySelectorAll('[data-desc-gallery-trigger]');
+            const closeTriggers = document.querySelectorAll('[data-desc-gallery-close]');
+            let lastActiveTrigger = null;
+            let closeTimer = null;
+
+            if (!lightbox || !lightboxImage || !lightboxCaption || !lightboxClose || !triggers.length) {
+                return;
+            }
+
+            const openLightbox = function (trigger) {
+                if (closeTimer) {
+                    window.clearTimeout(closeTimer);
+                    closeTimer = null;
+                }
+
+                lastActiveTrigger = trigger;
+                lightboxImage.src = trigger.dataset.descGallerySrc || '';
+                lightboxImage.alt = trigger.dataset.descGalleryAlt || '';
+                lightboxCaption.textContent = trigger.dataset.descGalleryAlt || '';
+                lightbox.hidden = false;
+                document.body.classList.add('desc-gallery-lightbox-open');
+
+                window.requestAnimationFrame(function () {
+                    lightbox.classList.add('is-open');
+                    lightboxClose.focus();
+                });
+            };
+
+            const closeLightbox = function () {
+                if (lightbox.hidden) {
+                    return;
+                }
+
+                lightbox.classList.remove('is-open');
+                document.body.classList.remove('desc-gallery-lightbox-open');
+
+                closeTimer = window.setTimeout(function () {
+                    lightbox.hidden = true;
+                    lightboxImage.src = '';
+                    lightboxImage.alt = '';
+                    lightboxCaption.textContent = '';
+                    closeTimer = null;
+                }, 180);
+
+                if (lastActiveTrigger) {
+                    lastActiveTrigger.focus();
+                }
+            };
+
+            triggers.forEach(function (trigger) {
+                trigger.addEventListener('click', function () {
+                    openLightbox(trigger);
+                });
+            });
+
+            closeTriggers.forEach(function (trigger) {
+                trigger.addEventListener('click', closeLightbox);
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
+@endpush

@@ -22,6 +22,13 @@
             </div>
         @endif
 
+        @if($errors->any())
+            <div class="admin-alert admin-alert--danger">
+                <span class="admin-alert__text">{{ $errors->first() }}</span>
+                <button type="button" class="admin-alert__close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+
         <div class="admin-application__grid">
             {{-- Левая колонка: Информация --}}
             <div class="admin-application__main">
@@ -146,7 +153,7 @@
                         <dl class="admin-details">
                             <div class="admin-details__row">
                                 <dt class="admin-details__label">Имя</dt>
-                                <dd class="admin-details__value admin-details__value--bold">{{ $application->user->name }}</dd>
+                                <dd class="admin-details__value admin-details__value--bold">{{ $application->contact_name ?? '—' }}</dd>
                             </div>
 
                             <div class="admin-details__row">
@@ -157,11 +164,11 @@
                             <div class="admin-details__row">
                                 <dt class="admin-details__label">Телефон</dt>
                                 <dd class="admin-details__value admin-details__value--contacts">
-                                    <a href="tel:{{ $application->user->phone }}" class="admin-link admin-link--phone">
-                                        {{ $application->user->phone }}
+                                    <a href="tel:{{ $application->contact_phone_digits ?? '' }}" class="admin-link admin-link--phone">
+                                        {{ $application->contact_phone_formatted ?? '—' }}
                                     </a>
                                     <a
-                                        href="https://wa.me/{{ $application->user->phone }}"
+                                        href="https://wa.me/{{ $application->contact_phone_digits ?? '' }}"
                                         target="_blank"
                                         class="admin-btn admin-btn--whatsapp"
                                     >
@@ -246,11 +253,11 @@
                     </div>
                     <div class="admin-card__body">
                         <div class="admin-contacts-grid">
-                            <a href="tel:{{ $application->user->phone }}"
+                            <a href="tel:{{ $application->contact_phone_digits ?? '' }}"
                                class="admin-btn admin-btn--outline admin-btn--phone-black">
                                 Позвонить
                             </a>
-                            <a href="https://wa.me/{{ $application->user->phone }}"
+                            <a href="https://wa.me/{{ $application->contact_phone_digits ?? '' }}"
                                target="_blank"
                                class="admin-btn admin-btn--whatsapp">
                                 WhatsApp

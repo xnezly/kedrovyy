@@ -39,11 +39,8 @@
                        class="nav-link {{ request()->routeIs('admin.applications.*') ? 'active' : '' }}">
                         <i class="bi bi-calendar-check"></i>
                         <span>Бронирования</span>
-                        @php
-                            $pendingCount = \App\Models\Application::where('status', \App\Enums\ApplicationStatusEnum::PENDING)->count();
-                        @endphp
-                        @if($pendingCount > 0)
-                            <span class="badge bg-danger rounded-pill ms-auto">{{ $pendingCount }}</span>
+                        @if(($adminPendingApplicationsCount ?? 0) > 0)
+                            <span class="badge bg-danger rounded-pill ms-auto">{{ $adminPendingApplicationsCount }}</span>
                         @endif
                     </a>
                 </li>

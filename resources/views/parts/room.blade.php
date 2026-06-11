@@ -26,7 +26,7 @@
                     @endforeach
                     @if($room->services_count > 3)
                         <span class="card__amenity card__amenity--more">
-                            +{{ $room->services_count - 3 }} ещё
+                            +{{ $room->services_count - 3 }} еще
                         </span>
                     @endif
                 </div>
@@ -36,7 +36,13 @@
         <div class="card__footer">
             <p class="card__price">{{ $room->formatted_price }}<span>/ночь</span></p>
 
-            <a href="{{ route('rooms.show', $room) }}" class="btn btn--outline-pill card__button">Подробнее</a>
+            <a
+                href="{{ route('rooms.show', $room) }}"
+                class="btn btn--outline-pill card__button"
+                aria-label="Перейти к номеру {{ $room->name ?? 'Подробнее о номере' }}"
+            >
+                Подробнее
+            </a>
         </div>
     </div>
 </div>

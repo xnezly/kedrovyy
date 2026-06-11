@@ -13,7 +13,7 @@
 
                 {{-- Форма выбора дат --}}
                 <div class="booking__form-card">
-                    <form id="availabilityForm" class="booking__form">
+                    <form id="availabilityForm" class="booking__form" action="{{ route('booking') }}" method="GET">
                         <div class="booking__form-row">
                             <div class="booking__form-group">
                                 <label class="booking__form-label" for="check_in">Дата заезда</label>
@@ -31,7 +31,7 @@
                                        class="booking__form-input"
                                        id="check_out"
                                        name="check_out"
-                                       min="{{ date('Y-m-d', strtotime('+1 day')) }}"
+                                       min="{{ $checkIn->copy()->addDay()->format('Y-m-d') }}"
                                        value="{{ $checkOut->format('Y-m-d') }}"
                                        required>
                             </div>
@@ -60,13 +60,13 @@
                             @include('parts.room')
                         @empty
                             {{-- Сообщение если нет доступных номеров --}}
-                            <div id="noRooms" class="booking__no-rooms" style="display: none;">
+                            <div id="noRooms" class="booking__no-rooms">
                                 <div class="booking__no-rooms-icon">📅</div>
                                 <h3 class="booking__no-rooms-title">К сожалению, на выбранные даты нет свободных
                                     номеров</h3>
                                 <p class="booking__no-rooms-text">Попробуйте выбрать другие даты или свяжитесь с
                                     нами</p>
-                                <a href="/contacts" class="booking__btn booking__btn--outline">
+                                <a href="{{ route('contacts') }}" class="booking__btn booking__btn--outline">
                                     Контакты
                                 </a>
                             </div>
@@ -175,4 +175,33 @@
     {{--            }--}}
     {{--        });--}}
     {{--    </script>--}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkInInput = document.getElementById('check_in');
+            const checkOutInput = document.getElementById('check_out');
+
+            if (!checkInInput || !checkOutInput) {
+                return;
+            }
+
+            const syncCheckOut = function () {
+                if (!checkInInput.value) {
+                    return;
+                }
+
+                const nextDay = new Date(checkInInput.value + 'T00:00:00');
+                nextDay.setDate(nextDay.getDate() + 1);
+
+                const minCheckOut = nextDay.toISOString().split('T')[0];
+                checkOutInput.min = minCheckOut;
+
+                if (!checkOutInput.value || checkOutInput.value <= checkInInput.value) {
+                    checkOutInput.value = minCheckOut;
+                }
+            };
+
+            checkInInput.addEventListener('change', syncCheckOut);
+            syncCheckOut();
+        });
+    </script>
 @endsection

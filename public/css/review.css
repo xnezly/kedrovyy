@@ -90,6 +90,12 @@
   font-weight: 700;
   line-height: 1.2;
 }
+.reviews__helper {
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  color: #5b6672;
+}
 .reviews__rating {
   margin-bottom: 20px;
 }

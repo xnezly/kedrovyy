@@ -260,18 +260,18 @@
                                 <dl class="modal-details">
                                     <div class="modal-details__row">
                                         <dt class="modal-details__label">Имя</dt>
-                                        <dd class="modal-details__value modal-details__value--bold">{{ $application->user->name }}</dd>
+                                        <dd class="modal-details__value modal-details__value--bold">{{ $application->contact_name ?? '—' }}</dd>
                                     </div>
                                     <div class="modal-details__row">
                                         <dt class="modal-details__label">Возраст</dt>
                                         <dd class="modal-details__value">
-                                            {{ $application->user->age ? $application->user->age . ' лет' : '—' }}
+                                            {{ $application->contact_age ? $application->contact_age . ' лет' : '—' }}
                                         </dd>
                                     </div>
                                     <div class="modal-details__row">
                                         <dt class="modal-details__label">Телефон</dt>
                                         <dd class="modal-details__value">
-                                            <p class="modal-details__link">{{ $application->user->phone ?? '—' }}</p>
+                                            <p class="modal-details__link">{{ $application->contact_phone_formatted ?? '—' }}</p>
                                         </dd>
                                     </div>
                                     <div class="modal-details__row">

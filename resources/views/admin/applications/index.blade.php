@@ -18,6 +18,15 @@
             </div>
         @endif
 
+        @if($errors->any())
+            <div class="admin-alert admin-alert--danger">
+                <span class="admin-alert__text">
+                    <i class="bi bi-exclamation-triangle me-2"></i>{{ $errors->first() }}
+                </span>
+                <button type="button" class="admin-alert__close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+
         {{-- Фильтры --}}
         <div class="admin-filters">
             <form method="get" class="admin-filters__form">
@@ -143,8 +152,9 @@
                                     <form action="{{ route('admin.applications.update', $application) }}" method="POST"
                                           class="admin-actions__form">
                                         @csrf
+                                        @method('PATCH')
                                         @php
-                                            $statusIcons = ['pending' => 'На рассмотрении', 'confirmed' => 'Подтерждено', 'cancelled' => 'Отменено'];
+                                            $statusIcons = ['pending' => 'На рассмотрении', 'confirmed' => 'Подтверждено', 'cancelled' => 'Отменено'];
                                         @endphp
                                         <select name="status" class="admin-actions__select"
                                                 onchange="this.form.submit()" title="Изменить статус">

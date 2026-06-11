@@ -2,9 +2,11 @@
 
 @section('title', $room->name)
 
-@section('content')
+@push('styles')
     <link rel="stylesheet" href="{{ asset('css/review.css') }}">
+@endpush
 
+@section('content')
     @php
         $reviewsCount = $reviews->count();
         $averageRating = $reviewsCount ? number_format($reviews->avg('rating'), 1) : null;
@@ -166,7 +168,8 @@
                             </div>
 
                             <div class="reviews__layout">
-                                <form action="{{ route('rooms.comment', $room) }}" method="post" class="reviews__form">
+                                @auth
+                                    <form action="{{ route('rooms.comment', $room) }}" method="post" class="reviews__form">
                                     @csrf
 
                                     <h3 class="reviews__title">Оставить отзыв</h3>
@@ -205,7 +208,16 @@
                                     ></textarea>
 
                                     <button type="submit" class="reviews__button">Оставить отзыв</button>
-                                </form>
+                                    </form>
+                                @else
+                                    <div class="reviews__form">
+                                        <h3 class="reviews__title">Войдите, чтобы оставить отзыв</h3>
+                                        <p class="reviews__helper">
+                                            Оставлять отзывы о номерах могут только авторизованные пользователи.
+                                        </p>
+                                        <a href="{{ route('login') }}" class="reviews__button">Войти</a>
+                                    </div>
+                                @endauth
 
                                 <div class="reviews__content">
                                     @if($reviewsCount > 0)

@@ -30,6 +30,8 @@ class AdminMainController extends Controller
             ->limit(5)
             ->get();
 
+        $recentApplications->each->syncContactSnapshotToUser();
+
         return view('admin.dashboard', [
             'applicationStatuses' => $applicationStatuses,
             'recentApplications' => $recentApplications,

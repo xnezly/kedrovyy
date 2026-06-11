@@ -7,6 +7,8 @@
         $roomImage = $room->image_url ?: asset('img/photo.jpg');
         $roomPrice = (int) ($room->price ?? 2000);
         $selectedServices = collect(old('services', []))->map(fn ($id) => (int) $id)->all();
+        $contactPhone = old('number', \App\Models\Application::formatPhone(auth()->user()->phone ?? null));
+        $contactAge = old('age', auth()->user()->age ?? '');
     @endphp
 
     <div class="booking-page">
@@ -31,13 +33,11 @@
                 <div class="booking-hero__media">
                     <img src="{{ $roomImage }}" alt="{{ $room->name }}" class="booking-hero__image">
                     <div class="booking-hero__badge">
-                        <i class="bi bi-stars" aria-hidden="true"></i>
                         <span>Уютный отдых в гостевом доме «Кедровый»</span>
                     </div>
                 </div>
 
                 <div class="booking-hero__content">
-                    <span class="booking-hero__eyebrow">Онлайн-заявка</span>
                     <h1 class="booking-hero__title">Бронирование номера</h1>
                     <h2 class="booking-hero__room-name">{{ $room->name ?? 'Стандартный номер' }}</h2>
                     <p class="booking-hero__description">
@@ -84,6 +84,7 @@
                                                id="name"
                                                name="name"
                                                placeholder=" "
+                                               required
                                                value="{{ old('name', auth()->user()->name ?? '') }}">
                                         <label class="booking-form__label" for="name">Ваше имя</label>
                                         @error('name')
@@ -99,7 +100,10 @@
                                                id="age"
                                                name="age"
                                                placeholder=" "
-                                               value="{{ old('age') }}">
+                                               min="0"
+                                               max="120"
+                                               inputmode="numeric"
+                                               value="{{ $contactAge }}">
                                         <label class="booking-form__label" for="age">Возраст</label>
                                         @error('age')
                                         <span class="booking-form__error">{{ $message }}</span>
@@ -114,8 +118,12 @@
                                        id="phone"
                                        name="number"
                                        placeholder=" "
+                                       required
+                                       inputmode="tel"
+                                       autocomplete="tel"
                                        maxlength="18"
-                                       value="{{ old('number') }}">
+                                       data-phone-mask
+                                       value="{{ $contactPhone }}">
                                 <label class="booking-form__label" for="phone">Номер телефона</label>
                                 @error('number')
                                 <span class="booking-form__error">{{ $message }}</span>
@@ -234,6 +242,7 @@
                                                name="services[]"
                                                value="{{ $service->id }}"
                                                data-price="{{ $service->price }}"
+                                               data-name="{{ $service->name }}"
                                                id="service_{{ $service->id }}"
                                                {{ $isSelected ? 'checked' : '' }}>
 
@@ -296,6 +305,11 @@
                             </div>
                         </div>
 
+                        <div class="booking-summary__services" id="bookingSummaryServices" hidden>
+                            <span class="booking-summary__services-label">&#1042;&#1099;&#1073;&#1088;&#1072;&#1085;&#1085;&#1099;&#1077; &#1091;&#1089;&#1083;&#1091;&#1075;&#1080;</span>
+                            <div class="booking-summary__services-list" id="bookingSummaryServicesList"></div>
+                        </div>
+
                         <div class="booking-summary__totals">
                             <div class="booking-summary__total-row">
                                 <span>Проживание</span>
@@ -346,6 +360,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const roomPrice = {{ $roomPrice }};
+            const ageInput = document.getElementById('age');
             const guestsInput = document.getElementById('number_of_guests');
             const checkInInput = document.getElementById('check_in');
             const checkOutInput = document.getElementById('check_out');
@@ -355,6 +370,8 @@
             const summaryGuests = document.getElementById('bookingSummaryGuests');
             const summaryDates = document.getElementById('bookingSummaryDates');
             const summaryNights = document.getElementById('bookingSummaryNights');
+            const summaryServices = document.getElementById('bookingSummaryServices');
+            const summaryServicesList = document.getElementById('bookingSummaryServicesList');
             const roomTotal = document.getElementById('bookingRoomTotal');
             const servicesRow = document.getElementById('bookingServicesRow');
             const servicesTotal = document.getElementById('bookingServicesTotal');
@@ -401,27 +418,64 @@
                 return nights;
             }
 
-            function calculateServicesTotal() {
-                let total = 0;
+            function getSelectedServices() {
+                const selectedServices = [];
 
                 serviceCheckboxes.forEach(function (checkbox) {
                     const card = checkbox.closest('.booking-services__card');
 
                     if (checkbox.checked) {
-                        total += Number(checkbox.dataset.price || 0);
+                        selectedServices.push({
+                            name: checkbox.dataset.name || '\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u0443\u0441\u043b\u0443\u0433\u0430',
+                            price: Number(checkbox.dataset.price || 0),
+                        });
                         card?.classList.add('booking-services__card--selected');
                     } else {
                         card?.classList.remove('booking-services__card--selected');
                     }
                 });
 
-                return total;
+                return selectedServices;
+            }
+
+            function renderSelectedServices(selectedServices) {
+                if (!summaryServices || !summaryServicesList) {
+                    return;
+                }
+
+                summaryServicesList.replaceChildren();
+
+                if (selectedServices.length === 0) {
+                    summaryServices.hidden = true;
+                    return;
+                }
+
+                selectedServices.forEach(function (service) {
+                    const item = document.createElement('div');
+                    item.className = 'booking-summary__services-item';
+
+                    const name = document.createElement('span');
+                    name.className = 'booking-summary__services-name';
+                    name.textContent = service.name;
+
+                    const price = document.createElement('strong');
+                    price.className = 'booking-summary__services-price';
+                    price.textContent = formatMoney(service.price);
+
+                    item.append(name, price);
+                    summaryServicesList.append(item);
+                });
+
+                summaryServices.hidden = false;
             }
 
             function updateSummary() {
                 const guests = Math.max(parseInt(guestsInput?.value || '1', 10), 1);
                 const nights = calculateNights();
-                const servicesSum = calculateServicesTotal();
+                const selectedServices = getSelectedServices();
+                const servicesSum = selectedServices.reduce(function (total, service) {
+                    return total + service.price;
+                }, 0);
                 const roomSum = nights > 0 ? roomPrice * nights : 0;
                 const total = roomSum + servicesSum;
 
@@ -434,6 +488,7 @@
                     summaryDates.textContent = 'Выберите даты';
                 }
 
+                renderSelectedServices(selectedServices);
                 roomTotal.textContent = formatMoney(roomSum);
                 grandTotal.textContent = formatMoney(total);
                 if (grandTotalMobile) {
@@ -448,6 +503,21 @@
                     servicesTotal.textContent = formatMoney(0);
                 }
             }
+
+            ageInput?.addEventListener('keydown', function (event) {
+                if (['-', '+', 'e', 'E'].includes(event.key)) {
+                    event.preventDefault();
+                }
+            });
+
+            ageInput?.addEventListener('input', function () {
+                if (ageInput.value === '') {
+                    return;
+                }
+
+                const normalizedAge = Math.min(Math.max(parseInt(ageInput.value, 10) || 0, 0), 120);
+                ageInput.value = String(normalizedAge);
+            });
 
             guestsInput?.addEventListener('input', updateSummary);
             checkInInput?.addEventListener('change', updateSummary);

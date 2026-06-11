@@ -83,9 +83,9 @@
                                     <td data-label="Гость">
                                         <div class="admin-recent-table__guest">
                                             <span
-                                                class="admin-recent-table__guest-name">{{ $application->user->name }}</span>
+                                                class="admin-recent-table__guest-name">{{ $application->contact_name }}</span>
                                             <span
-                                                class="admin-recent-table__guest-phone">{{ $application->user->phone }}</span>
+                                                class="admin-recent-table__guest-phone">{{ $application->contact_phone_formatted }}</span>
                                         </div>
                                     </td>
                                     <td data-label="Номер">{{ $application->room->name }}</td>
