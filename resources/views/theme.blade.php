@@ -12,18 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo.png') }}">
-    <script>
-        (function () {
-            try {
-                const transitionDirection = window.sessionStorage.getItem('kedrovyy_page_transition');
-
-                if (transitionDirection === 'forward' || transitionDirection === 'back') {
-                    document.documentElement.classList.add('page-transition-entering', 'page-transition-entering--' + transitionDirection);
-                }
-            } catch (error) {
-            }
-        })();
-    </script>
+    <script src="{{ asset('js/page-transition-head.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @stack('styles')
@@ -202,16 +191,7 @@
 </div>
 
 <!-- Yandex.Metrika counter -->
-<script defer type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109240491', 'ym');
-
-    ym(109240491, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
+<script defer src="{{ asset('js/yandex-metrika.js') }}"></script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109240491" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
@@ -219,57 +199,7 @@
 <script defer src="{{ asset('js/burger.js') }}"></script>
 <script defer src="{{ asset('js/index.js') }}"></script>
 <script defer src="{{ asset('js/page-transition.js') }}"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const promoToast = document.getElementById('promoToast');
-        const promoToastClose = document.getElementById('promoToastClose');
-        const promoToastLabel = promoToast ? promoToast.querySelector('.promo-toast__label') : null;
-        const promoToastText = promoToast ? promoToast.querySelector('.promo-toast__text') : null;
-        const promoShortLabel = '\u0421\u043f\u0435\u0446\u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0435';
-        const promoCloseLabel = '\u0417\u0430\u043a\u0440\u044b\u0442\u044c \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0435';
-
-        if (promoToastLabel) {
-            promoToastLabel.textContent = promoShortLabel;
-        }
-
-        if (promoToastText) {
-            promoToastText.textContent = '\u0421\u043a\u0438\u0434\u043a\u0430 10% \u043d\u0430 \u0432\u0441\u0435 \u043d\u043e\u043c\u0435\u0440\u0430 \u043f\u0440\u0438 \u0431\u0440\u043e\u043d\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0438 \u043d\u0430 3 \u043d\u043e\u0447\u0438!';
-        }
-
-        if (!promoToast || !promoToastClose) {
-            return;
-        }
-
-        promoToastClose.setAttribute('aria-label', promoCloseLabel);
-
-        const storageKey = 'kedrovyy_promo_toast_closed';
-
-        try {
-            if (window.sessionStorage.getItem(storageKey) === '1') {
-                promoToast.remove();
-                return;
-            }
-        } catch (error) {
-        }
-
-        window.requestAnimationFrame(function () {
-            promoToast.classList.add('is-visible');
-        });
-
-        promoToastClose.addEventListener('click', function () {
-            promoToast.classList.remove('is-visible');
-
-            try {
-                window.sessionStorage.setItem(storageKey, '1');
-            } catch (error) {
-            }
-
-            window.setTimeout(function () {
-                promoToast.remove();
-            }, 280);
-        });
-    });
-</script>
+<script defer src="{{ asset('js/promo-toast.js') }}"></script>
 @stack('scripts')
 </body>
 </html>
