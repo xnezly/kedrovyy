@@ -79,8 +79,8 @@
                             <tbody>
                             @forelse($recentApplications as $application)
                                 <tr>
-                                    <td>#{{ $application->id }}</td>
-                                    <td>
+                                    <td data-label="ID">#{{ $application->id }}</td>
+                                    <td data-label="Гость">
                                         <div class="admin-recent-table__guest">
                                             <span
                                                 class="admin-recent-table__guest-name">{{ $application->user->name }}</span>
@@ -88,17 +88,17 @@
                                                 class="admin-recent-table__guest-phone">{{ $application->user->phone }}</span>
                                         </div>
                                     </td>
-                                    <td>{{ $application->room->name }}</td>
-                                    <td class="admin-recent-table__dates">
+                                    <td data-label="Номер">{{ $application->room->name }}</td>
+                                    <td class="admin-recent-table__dates" data-label="Даты">
                                         {{ $application->check_in->format('d.m') }}
                                         - {{ $application->check_out->format('d.m.Y') }}
                                     </td>
-                                    <td>
+                                    <td data-label="Статус">
                                         <span class="admin-badge admin-badge--{{ $application->status }}">
                                             {{ $application->status->label() }}
                                         </span>
                                     </td>
-                                    <td>
+                                    <td data-label="Действия">
                                         <a
                                             href="{{ route('admin.applications.show', $application) }}"
                                             class="admin-btn admin-btn--outline admin-btn--sm"

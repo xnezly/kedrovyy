@@ -39,9 +39,9 @@
                     <tbody class="admin-rooms__table-body">
                     @forelse($services as $service)
                         <tr class="admin-rooms__row">
-                            <td class="admin-rooms__cell admin-rooms__cell--id">{{ $service->id }}</td>
+                            <td class="admin-rooms__cell admin-rooms__cell--id" data-label="ID">{{ $service->id }}</td>
 
-                            <td class="admin-rooms__cell">
+                            <td class="admin-rooms__cell" data-label="Фото">
                                 @if($service->icon)
                                     <img src="{{ $service->icon_url }}"
                                          alt="{{ $service->name }}"
@@ -53,19 +53,19 @@
                                 @endif
                             </td>
 
-                            <td class="admin-rooms__cell admin-rooms__cell--name">
+                            <td class="admin-rooms__cell admin-rooms__cell--name" data-label="Название">
                                 {{ $service->name }}
                             </td>
 
-                            <td class="admin-rooms__cell admin-rooms__cell--desc">
+                            <td class="admin-rooms__cell admin-rooms__cell--desc" data-label="Описание">
                                 {{ $service->description }}
                             </td>
 
-                            <td class="admin-rooms__cell admin-rooms__cell--price">
+                            <td class="admin-rooms__cell admin-rooms__cell--price" data-label="Цена">
                                 {{ $service->formatted_price }}
                             </td>
 
-                            <td class="admin-rooms__cell admin-rooms__cell--actions">
+                            <td class="admin-rooms__cell admin-rooms__cell--actions" data-label="Действия">
                                 <div class="admin-rooms__actions">
                                     <a href="{{ route('admin.services.edit', $service) }}"
                                        class="admin-rooms__btn admin-rooms__btn--view"

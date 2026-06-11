@@ -78,34 +78,34 @@
                     <tbody class="admin-table__body">
                     @forelse($applications as $application)
                         <tr class="admin-table__row">
-                            <td class="admin-table__cell admin-table__cell--index">
+                            <td class="admin-table__cell admin-table__cell--index" data-label="№">
                                 <span class="admin-table__id">#{{ $application->id }}</span>
                             </td>
-                            <td class="admin-table__cell">
+                            <td class="admin-table__cell" data-label="Номер">
                                 <a href="{{ route('rooms.show', $application->room) }}" class="admin-table__link"
                                    target="_blank">
                                     {{ $application->room->name }}
                                 </a>
                             </td>
-                            <td class="admin-table__cell">
+                            <td class="admin-table__cell" data-label="Дата заезда">
                                 <div class="admin-table__datetime">
                                     <span class="admin-table__date">{{ $application->check_in->format('d.m.Y') }}</span>
                                     <span class="admin-table__time">{{ $application->check_in->format('H:i') }}</span>
                                 </div>
                             </td>
-                            <td class="admin-table__cell">
+                            <td class="admin-table__cell" data-label="Дата выезда">
                                 <div class="admin-table__datetime">
                                     <span
                                         class="admin-table__date">{{ $application->check_out->format('d.m.Y') }}</span>
                                     <span class="admin-table__time">{{ $application->check_out->format('H:i') }}</span>
                                 </div>
                             </td>
-                            <td class="admin-table__cell">
+                            <td class="admin-table__cell" data-label="Ночей">
                                 <span class="admin-badge">
                                     {{ $application->check_in->diffInDays($application->check_out) }}
                                 </span>
                             </td>
-                            <td class="admin-table__cell">
+                            <td class="admin-table__cell" data-label="Услуги">
                                 @if($application->services_count)
                                     <div class="admin-table__services">
                                         <span class="admin-badge admin-badge--info">
@@ -119,19 +119,19 @@
                                     <span class="admin-table__empty">—</span>
                                 @endif
                             </td>
-                            <td class="admin-table__cell">{{ $application->count }}</td>
-                            <td class="admin-table__cell">
+                            <td class="admin-table__cell" data-label="Гостей">{{ $application->count }}</td>
+                            <td class="admin-table__cell" data-label="Статус">
                                 <span class="admin-badge admin-badge--{{ $application->status }}">
                                     {{ $application->status->label() }}
                                 </span>
                             </td>
-                            <td class="admin-table__cell">
+                            <td class="admin-table__cell" data-label="Дата создания">
                                 <small class="admin-table__created">
                                     {{ $application->created_at->format('d.m.Y') }}<br>
                                     {{ $application->created_at->format('H:i') }}
                                 </small>
                             </td>
-                            <td class="admin-table__cell admin-table__cell--actions">
+                            <td class="admin-table__cell admin-table__cell--actions" data-label="Действия">
                                 <div class="admin-actions">
                                     <a href="{{ route('admin.applications.show', $application) }}"
                                        class="admin-rooms__btn admin-rooms__btn--view"

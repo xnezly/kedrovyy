@@ -107,12 +107,18 @@ function initConfirmCancel() {
 
                 // CSRF токен
                 const csrf = document.querySelector('meta[name="csrf-token"]');
-                if (csrf) {
+                const fallbackCsrf = document.querySelector('input[name="_token"]');
+                const csrfValue = csrf?.content || fallbackCsrf?.value;
+
+                if (csrfValue) {
                     const input = document.createElement('input');
                     input.type = 'hidden';
                     input.name = '_token';
-                    input.value = csrf.content;
+                    input.value = csrfValue;
                     form.appendChild(input);
+                } else {
+                    console.error('CSRF token not found for cancellation form.');
+                    return;
                 }
 
                 // Метод DELETE если нужно

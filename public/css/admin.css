@@ -2949,4 +2949,279 @@ ul {
   cursor: not-allowed;
 }
 
+body.admin-menu-open {
+  overflow: hidden;
+}
+
+.admin-mobile-bar {
+  display: none;
+}
+
+.sidebar-toggle {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  body {
+    overflow-x: hidden;
+  }
+  .admin-sidebar {
+    width: min(320px, 86vw);
+  }
+  .sidebar-toggle {
+    display: inline-flex;
+  }
+  .admin-content .container-fluid {
+    padding: 0 14px 18px;
+  }
+  .admin-mobile-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 64px;
+    margin: 0 -14px 18px;
+    padding: 12px 14px;
+    background: rgba(245, 247, 250, 0.96);
+    border-bottom: 1px solid #e2e8f0;
+    backdrop-filter: blur(14px);
+  }
+  .admin-mobile-bar__toggle, .admin-mobile-bar__home {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #2d3748;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .admin-mobile-bar__toggle i, .admin-mobile-bar__home i {
+    font-size: 20px;
+  }
+  .admin-mobile-bar__brand {
+    min-width: 0;
+    flex: 1;
+  }
+  .admin-mobile-bar__title {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2d3748;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (max-width: 768px) {
+  .admin-dashboard,
+  .admin-bookings,
+  .admin-rooms,
+  .admin-room-form,
+  .admin-application {
+    padding: 0;
+  }
+  .admin-dashboard__header,
+  .admin-bookings__header,
+  .admin-rooms__header,
+  .admin-room-form__header,
+  .admin-application__header {
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  .admin-dashboard__title,
+  .admin-bookings__title,
+  .admin-rooms__title,
+  .admin-room-form__title,
+  .admin-application__title {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+  .admin-bookings__back-btn,
+  .admin-rooms__add-btn,
+  .admin-room-form__back-btn,
+  .admin-application__back-btn,
+  .admin-application__room-link {
+    width: 100%;
+    justify-content: center;
+  }
+  .admin-application__actions,
+  .admin-rooms__actions,
+  .admin-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .admin-actions__form,
+  .admin-rooms__form {
+    width: 100%;
+  }
+  .admin-actions__select,
+  .admin-rooms__btn {
+    width: 100%;
+  }
+  .admin-filters,
+  .admin-table-card,
+  .admin-recent-table,
+  .admin-quick-actions,
+  .admin-rooms__card,
+  .admin-card,
+  .admin-card--form,
+  .admin-card--sidebar {
+    margin: 0 0 16px;
+    border-radius: 18px;
+  }
+  .admin-filters,
+  .admin-quick-actions__body,
+  .admin-card__body,
+  .admin-card--form,
+  .admin-card--sidebar {
+    padding: 16px;
+  }
+  .admin-recent-table__header,
+  .admin-quick-actions__header,
+  .admin-card__header {
+    padding: 16px;
+  }
+  .admin-filters__search {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .admin-filters__search-input,
+  .admin-filters__search-btn {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .admin-pagination {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 0 0;
+  }
+  .admin-pagination .page-item .page-link {
+    min-width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+  .admin-table-card,
+  .admin-recent-table,
+  .admin-rooms__card {
+    overflow: visible;
+  }
+  .admin-table-wrapper,
+  .admin-recent-table__wrapper,
+  .admin-rooms__table-wrapper {
+    overflow: visible;
+  }
+  .admin-table-card .admin-table,
+  .admin-card .admin-table.admin-table--compact,
+  .admin-recent-table__table,
+  .admin-rooms__table {
+    min-width: 0;
+    width: 100%;
+  }
+  .admin-table-card .admin-table thead,
+  .admin-card .admin-table.admin-table--compact thead,
+  .admin-recent-table__table thead,
+  .admin-rooms__table thead {
+    display: none;
+  }
+  .admin-table-card .admin-table__body,
+  .admin-card .admin-table.admin-table--compact .admin-table__body,
+  .admin-recent-table__table tbody,
+  .admin-rooms__table-body {
+    display: grid;
+    gap: 12px;
+    padding: 12px;
+  }
+  .admin-table-card .admin-table__row,
+  .admin-card .admin-table.admin-table--compact .admin-table__row,
+  .admin-recent-table__table tbody tr,
+  .admin-rooms__row {
+    display: block;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+  }
+  .admin-table-card .admin-table__row--empty,
+  .admin-card .admin-table.admin-table--compact .admin-table__row--empty,
+  .admin-rooms__row--empty {
+    box-shadow: none;
+    background: transparent;
+  }
+  .admin-table-card .admin-table__cell,
+  .admin-card .admin-table.admin-table--compact .admin-table__cell,
+  .admin-recent-table__table td,
+  .admin-rooms__cell {
+    display: grid;
+    grid-template-columns: minmax(88px, 112px) 1fr;
+    gap: 12px;
+    align-items: start;
+    width: 100%;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left !important;
+  }
+  .admin-table-card .admin-table__cell:last-child,
+  .admin-card .admin-table.admin-table--compact .admin-table__cell:last-child,
+  .admin-recent-table__table td:last-child,
+  .admin-rooms__cell:last-child {
+    border-bottom: none;
+  }
+  .admin-table-card .admin-table__cell::before,
+  .admin-card .admin-table.admin-table--compact .admin-table__cell::before,
+  .admin-recent-table__table td::before,
+  .admin-rooms__cell::before {
+    content: attr(data-label);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #718096;
+  }
+  .admin-table-card .admin-table__empty-cell,
+  .admin-card .admin-table.admin-table--compact .admin-table__empty-cell,
+  .admin-recent-table__empty,
+  .admin-rooms__empty-cell {
+    display: block !important;
+    padding: 28px 16px !important;
+  }
+  .admin-table-card .admin-table__empty-cell::before,
+  .admin-card .admin-table.admin-table--compact .admin-table__empty-cell::before,
+  .admin-recent-table__empty::before,
+  .admin-rooms__empty-cell::before {
+    content: none;
+  }
+  .admin-table__datetime,
+  .admin-table__services,
+  .admin-recent-table__guest {
+    align-items: flex-start;
+  }
+  .admin-rooms__image,
+  .admin-rooms__image-placeholder {
+    width: 100%;
+    max-width: 132px;
+    height: 92px;
+  }
+  .admin-application__actions,
+  .admin-details__value--contacts,
+  .admin-contacts-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .admin-contacts-grid .admin-btn,
+  .admin-application__actions .admin-btn,
+  .admin-application__actions a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /*# sourceMappingURL=admin.css.map */

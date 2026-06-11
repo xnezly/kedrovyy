@@ -37,8 +37,8 @@
                     <tbody class="admin-rooms__table-body">
                     @forelse($rooms as $room)
                         <tr class="admin-rooms__row">
-                            <td class="admin-rooms__cell admin-rooms__cell--id">#{{ $room->id }}</td>
-                            <td class="admin-rooms__cell">
+                            <td class="admin-rooms__cell admin-rooms__cell--id" data-label="ID">#{{ $room->id }}</td>
+                            <td class="admin-rooms__cell" data-label="Фото">
                                 @if($room->images->isNotEmpty())
                                     <img
                                         src="{{ $room->image_url }}"
@@ -51,16 +51,16 @@
                                     </div>
                                 @endif
                             </td>
-                            <td class="admin-rooms__cell admin-rooms__cell--name">
+                            <td class="admin-rooms__cell admin-rooms__cell--name" data-label="Название">
                                 {{ $room->name }}
                             </td>
-                            <td class="admin-rooms__cell admin-rooms__cell--desc">
+                            <td class="admin-rooms__cell admin-rooms__cell--desc" data-label="Описание">
                                 {{ $room->description ?? '—' }}
                             </td>
-                            <td class="admin-rooms__cell admin-rooms__cell--price">
+                            <td class="admin-rooms__cell admin-rooms__cell--price" data-label="Цена">
                                 {{ $room->formatted_price }}
                             </td>
-                            <td class="admin-rooms__cell">
+                            <td class="admin-rooms__cell" data-label="Удобства">
                                 @if($room->services_count)
                                     <span class="admin-badge admin-badge--info">
                                             {{ $room->services_count }} шт.
@@ -69,7 +69,7 @@
                                     <span class="admin-rooms__empty">—</span>
                                 @endif
                             </td>
-                            <td class="admin-rooms__cell admin-rooms__cell--actions">
+                            <td class="admin-rooms__cell admin-rooms__cell--actions" data-label="Действия">
                                 <div class="admin-rooms__actions">
                                     <a
                                         href="{{ route('rooms.show', $room) }}"
