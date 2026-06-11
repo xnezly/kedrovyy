@@ -48,7 +48,13 @@ class ApplicationController extends Controller
     // Форма создания заявки
     public function create(Room $room): View
     {
-        $services = Service::all();
+        $room->loadMissing('services:id');
+
+        $services = Service::query()
+            ->bookingAddons()
+            ->whereNotIn('id', $room->services->pluck('id'))
+            ->orderBy('name')
+            ->get();
 
         return view('applications.create', [
             'room' => $room,
@@ -62,16 +68,20 @@ class ApplicationController extends Controller
         CreateApplicationRequest $request
     ): RedirectResponse
     {
+        $validated = $request->validated();
+
         $application = auth()->user()->applications()->create([
             'room_id' => $room->id,
-            'number_of_guests' => $request->number_of_guests,
-            'check_in' => $request->check_in,
-            'check_out' => $request->check_out,
-            'comment' => $request->comment,
+            'number_of_guests' => $validated['number_of_guests'],
+            'check_in' => $validated['check_in'],
+            'check_out' => $validated['check_out'],
+            'comment' => $validated['comment'] ?? null,
         ]);
 
-        if ($request->services) {
-            $application->services()->attach($request->services);
+        $selectedServices = $validated['services'] ?? [];
+
+        if (!empty($selectedServices)) {
+            $application->services()->attach($selectedServices);
         }
 
         return redirect()->route('home');

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,7 +15,22 @@ use Illuminate\Support\Facades\Storage;
  */
 class Service extends Model
 {
+    public const BOOKING_ADDON_KEYWORDS = [
+        'баня',
+        'купель',
+    ];
+
     protected $guarded = ['id'];
+
+    public function scopeBookingAddons(Builder $query): Builder
+    {
+        return $query->where(function (Builder $builder): void {
+            foreach (self::BOOKING_ADDON_KEYWORDS as $index => $keyword) {
+                $method = $index === 0 ? 'where' : 'orWhere';
+                $builder->{$method}('name', 'like', '%' . $keyword . '%');
+            }
+        });
+    }
 
     public function getIconUrlAttribute(): string
     {
