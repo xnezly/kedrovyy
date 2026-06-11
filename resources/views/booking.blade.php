@@ -1,6 +1,17 @@
 @extends('theme')
 @section('title', 'Бронирование')
 @section('content')
+    @php
+        $nightsMod100 = $nights % 100;
+        $nightsMod10 = $nights % 10;
+        $nightsLabel = match (true) {
+            $nightsMod100 >= 11 && $nightsMod100 <= 14 => 'ночей',
+            $nightsMod10 === 1 => 'ночь',
+            $nightsMod10 >= 2 && $nightsMod10 <= 4 => 'ночи',
+            default => 'ночей',
+        };
+    @endphp
+
     <div class="booking">
         <div class="booking__container">
             <div class="booking__wrapper">
@@ -51,7 +62,7 @@
                             Доступные номера с {{ $checkIn->format('d.m.Y') }} по {{ $checkOut->format('d.m.Y') }} ({{ $rooms->count() }})
                         </h3>
                         <span class="booking__results-badge">
-                            {{ $nights }} ночей
+                            {{ $nights }} {{ $nightsLabel }}
                         </span>
                     </div>
 

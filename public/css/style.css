@@ -90,29 +90,6 @@
 
 
 /* ===== РџСЂРѕРјРѕ-Р±Р°СЂ ===== */
-.promo-bar {
-    background: #198754 !important;
-    color: #fff !important;
-    border: none !important;
-    padding: 10px 0 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.promo-bar small {
-    font-size: 0.9rem;
-}
-
-.promo-bar .btn-close {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    filter: invert(1) grayscale(100%) brightness(200%);
-}
-
 /* Р РµРіРёСЃС‚СЂР°С†РёСЏ */
 .form-floating > label {
     color: #6c757d;
@@ -357,14 +334,6 @@
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
         filter: invert(1) grayscale(100);
-    }
-
-    .promo-bar .btn-close {
-        right: 10px;
-    }
-
-    .promo-bar small {
-        padding-right: 30px;
     }
 
     .gallery-text {

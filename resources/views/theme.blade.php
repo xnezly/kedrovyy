@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @stack('styles')
-    <title>@yield('title', '')</title>
+    <title>@yield('title', 'Кедровый')</title>
 </head>
 <body>
 <div class="page-transition-layer" id="pageTransitionLayer" aria-hidden="true"></div>
@@ -109,14 +109,6 @@
             </div>
         </div>
     </nav>
-    {{--
-
-    <div class="promo-strip" role="note">
-        <div class="container">
-            <small>Специальное предложение! Скидка 10% на все номера при бронировании на 3 ночи!</small>
-        </div>
-    </div>
-    --}}
 </header>
 
 <main style="flex: 1 0 auto">
@@ -182,10 +174,10 @@
         <i class="bi bi-percent"></i>
     </div>
     <div class="promo-toast__content">
-        <span class="promo-toast__label">РЎРїРµС†РїСЂРµРґР»РѕР¶РµРЅРёРµ</span>
-        <p class="promo-toast__text">РЎРєРёРґРєР° 10% РЅР° РІСЃРµ РЅРѕРјРµСЂР° РїСЂРё Р±СЂРѕРЅРёСЂРѕРІР°РЅРёРё РЅР° 3 РЅРѕС‡Рё!</p>
+        <span class="promo-toast__label">Спецпредложение</span>
+        <p class="promo-toast__text">Скидка 10% на все номера при бронировании на 3 ночи!</p>
     </div>
-    <button type="button" class="promo-toast__close" id="promoToastClose" aria-label="Р—Р°РєСЂС‹С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ">
+    <button type="button" class="promo-toast__close" id="promoToastClose" aria-label="Закрыть уведомление">
         <i class="bi bi-x-lg"></i>
     </button>
 </div>

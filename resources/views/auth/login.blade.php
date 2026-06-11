@@ -1,4 +1,5 @@
 @extends('theme')
+@section('title', 'Вход')
 @section('content')
     <div class="auth-page">
         <div class="auth-page__container">
