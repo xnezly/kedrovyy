@@ -5597,37 +5597,6 @@ h1, h2 {
   margin-bottom: 1rem;
 }
 
-.about__container {
-  width: 80%;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  justify-items: center;
-}
-
-.about__img {
-  border-radius: 10px;
-  width: 90%;
-}
-.about__text {
-  width: 90%;
-  padding: 1rem;
-}
-.about__text h5 {
-  font-weight: 700;
-  font-size: 2rem;
-}
-.about__text p {
-  font-size: 1.6rem;
-}
-.about__text:nth-child(odd) {
-  border-right: 3px solid #198754;
-}
-.about__text:nth-child(even) {
-  border-left: 3px solid #198754;
-}
-
 .gallery-row {
   margin: 2rem 0;
 }
