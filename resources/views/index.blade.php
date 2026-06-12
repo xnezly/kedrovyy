@@ -7,7 +7,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img
-                        src="{{ asset('img/1.jpg') }}"
+                        src="{{ asset('img/1.webp') }}"
                         alt="Гостевой дом Кедровый"
                     />
                     <div class="carousel-caption">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="carousel-item">
                     <img
-                        src="{{ asset('img/pole.jpg') }}"
+                        src="{{ asset('img/pole.webp') }}"
                         alt="Природа рядом с гостевым домом"
                     />
                     <div class="carousel-caption">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="carousel-item">
                     <img
-                        src="{{ asset('img/kypel.jpg') }}"
+                        src="{{ asset('img/kypel.webp') }}"
                         alt="Баня и купель"
                     />
                     <div class="carousel-caption">

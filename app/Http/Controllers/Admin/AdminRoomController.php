@@ -121,9 +121,19 @@ class AdminRoomController extends Controller
     {
         if ($room->images->isNotEmpty()) {
             foreach ($room->images as $image) {
-                Storage::disk('public')->delete($image->path);
+                $this->deleteImageFilePair($image->path);
                 $image->delete();
             }
+        }
+    }
+
+    private function deleteImageFilePair(string $path): void
+    {
+        Storage::disk('public')->delete($path);
+
+        $webpPath = preg_replace('/\.(jpe?g|png|jfif)$/i', '.webp', $path) ?? $path;
+        if ($webpPath !== $path) {
+            Storage::disk('public')->delete($webpPath);
         }
     }
 }

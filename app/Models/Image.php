@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @property int $id
@@ -15,6 +16,13 @@ class Image extends Model
 
     public function getUrlAttribute(): string
     {
-        return '/storage/' . ltrim($this->path, '/');
+        $path = $this->path;
+        $webpPath = preg_replace('/\.(jpe?g|png|jfif)$/i', '.webp', $path) ?? $path;
+
+        if ($webpPath !== $path && Storage::disk('public')->exists($webpPath)) {
+            return '/storage/' . ltrim($webpPath, '/');
+        }
+
+        return '/storage/' . ltrim($path, '/');
     }
 }

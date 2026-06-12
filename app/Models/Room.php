@@ -25,7 +25,7 @@ class Room extends Model
     public function getImageUrlAttribute(): ?string
     {
         return $this->images->isNotEmpty()
-            ? '/storage/' . ltrim($this->images[0]->path, '/')
+            ? $this->images[0]->url
             : null;
     }
 

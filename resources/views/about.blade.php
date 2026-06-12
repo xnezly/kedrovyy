@@ -5,14 +5,14 @@
 @section('content')
     @php
         $galleryImages = [
-            '6.jpg',
-            'pole.jpg',
-            '18.jpg',
-            '15.jpg',
-            '13.jpg',
-            '7.jpg',
-            '14.jpg',
-            '19.jpg',
+            '6.webp',
+            'pole.webp',
+            '18.webp',
+            '15.webp',
+            '13.webp',
+            '7.webp',
+            '14.webp',
+            '19.webp',
         ];
     @endphp
 
@@ -44,36 +44,11 @@
 
                 <div class="desc__hero-visual">
                     <img
-                        src="{{ asset('img/dom.jpg') }}"
+                        src="{{ asset('img/dom.webp') }}"
                         alt="Гостевой дом Кедровый"
                         class="desc__hero-image"
                     >
-
-                    <div class="desc__hero-note">
-                        <span class="desc__hero-note-label">Идеально для</span>
-                        <strong class="desc__hero-note-title">семейных поездок, отдыха с друзьями и спокойных выходных</strong>
-                    </div>
                 </div>
-            </section>
-
-            <section class="desc__section desc__section--intro">
-                <article class="desc-panel">
-                    <h2 class="desc-panel__title">Место, где легко выдохнуть и просто отдыхать</h2>
-                    <p class="desc-panel__text">
-                        Мы подготовили пространство, в котором приятно остановиться на выходные или на более долгий отдых.
-                        Здесь можно собраться с семьей, провести время с друзьями, устроить неспешные прогулки и
-                        наслаждаться атмосферой уюта в окружении природы.
-                    </p>
-                </article>
-
-                <article class="desc-panel">
-                    <h2 class="desc-panel__title">Абаза, лесной воздух и чувство уединения</h2>
-                    <p class="desc-panel__text">
-                        Гостевой дом находится в живописной части Абазы, где особенно чувствуется тишина,
-                        простор и близость к природе. Это отличный вариант для тех, кто хочет отдохнуть от суеты,
-                        перезагрузиться и провести время в спокойной обстановке.
-                    </p>
-                </article>
             </section>
 
             <section class="desc__section">

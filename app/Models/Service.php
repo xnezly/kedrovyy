@@ -34,7 +34,14 @@ class Service extends Model
 
     public function getIconUrlAttribute(): string
     {
-        return Storage::disk('public')->url($this->icon);
+        $iconPath = $this->icon;
+        $webpPath = preg_replace('/\.(jpe?g|png|jfif)$/i', '.webp', $iconPath) ?? $iconPath;
+
+        if ($webpPath !== $iconPath && Storage::disk('public')->exists($webpPath)) {
+            return Storage::disk('public')->url($webpPath);
+        }
+
+        return Storage::disk('public')->url($iconPath);
     }
 
     public function getFormattedPriceAttribute(): string

@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card__img">
-        <img src="{{ $room->image_url ?? '/img/photo.jpg' }}" alt="{{ $room->name ?? 'Номер' }}">
+        <img src="{{ $room->image_url ?? '/img/photo.webp' }}" alt="{{ $room->name ?? 'Номер' }}">
 
         @if($room->services_count)
             <span class="card__badge">

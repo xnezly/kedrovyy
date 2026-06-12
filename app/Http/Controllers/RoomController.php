@@ -37,7 +37,7 @@ class RoomController extends Controller
         if ($galleryImages->isEmpty()) {
             $galleryImages = collect([
                 [
-                    'url' => '/img/photo.jpg',
+                    'url' => '/img/photo.webp',
                     'alt' => $room->name,
                 ],
             ]);

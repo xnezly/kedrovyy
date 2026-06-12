@@ -30,7 +30,7 @@
 
         <div class="logo-wrapper text-center flex-grow-1">
             <a href="/">
-                <img src="{{ asset('img/logo.png') }}" alt="Кедровый" style="max-height: 200px;">
+                <img src="{{ asset('img/logo.webp') }}" alt="Кедровый" style="max-height: 200px;">
             </a>
         </div>
 

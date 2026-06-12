@@ -4,7 +4,7 @@
 
 @section('content')
     @php
-        $roomImage = $room->image_url ?: asset('img/photo.jpg');
+        $roomImage = $room->image_url ?: asset('img/photo.webp');
         $roomPrice = (int) ($room->price ?? 2000);
         $selectedServices = collect(old('services', []))->map(fn ($id) => (int) $id)->all();
         $contactPhone = old('number', \App\Models\Application::formatPhone(auth()->user()->phone ?? null));

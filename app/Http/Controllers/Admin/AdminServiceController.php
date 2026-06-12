@@ -90,6 +90,15 @@ class AdminServiceController extends Controller
     // Удаление иконки
     private function deleteIcon(Service $service): void
     {
-        if ($service->icon) Storage::disk('public')->delete($service->icon);
+        if (! $service->icon) {
+            return;
+        }
+
+        Storage::disk('public')->delete($service->icon);
+
+        $webpPath = preg_replace('/\.(jpe?g|png|jfif)$/i', '.webp', $service->icon) ?? $service->icon;
+        if ($webpPath !== $service->icon) {
+            Storage::disk('public')->delete($webpPath);
+        }
     }
 }
