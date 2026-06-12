@@ -1,13 +1,33 @@
 @extends('theme')
 @section('title', 'Главная')
 @section('content')
+    @php
+        $responsiveImage = static function (string $filename, int $mobileWidth, int $fullWidth): array {
+            $baseName = pathinfo($filename, PATHINFO_FILENAME);
+
+            return [
+                'src' => asset('img/' . $filename),
+                'srcset' => asset('img/' . $baseName . '-mobile.webp') . ' ' . $mobileWidth . 'w, ' . asset('img/' . $filename) . ' ' . $fullWidth . 'w',
+            ];
+        };
+
+        $heroImageOne = $responsiveImage('1.webp', 640, 960);
+        $heroImageTwo = $responsiveImage('pole.webp', 640, 1280);
+        $heroImageThree = $responsiveImage('kypel.webp', 640, 960);
+        $viewImageOne = $responsiveImage('vid1.webp', 360, 500);
+        $viewImageTwo = $responsiveImage('becedka.webp', 480, 702);
+        $viewImageThree = $responsiveImage('vid4.webp', 360, 501);
+        $viewImageFour = $responsiveImage('les.webp', 480, 720);
+    @endphp
 
     <section class="home-hero">
         <div class="carousel" id="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img
-                        src="{{ asset('img/1.webp') }}"
+                        src="{{ $heroImageOne['src'] }}"
+                        srcset="{{ $heroImageOne['srcset'] }}"
+                        sizes="(max-width: 768px) 90vw, 80vw"
                         alt="Гостевой дом Кедровый"
                     />
                     <div class="carousel-caption">
@@ -24,7 +44,9 @@
                 </div>
                 <div class="carousel-item">
                     <img
-                        src="{{ asset('img/pole.webp') }}"
+                        src="{{ $heroImageTwo['src'] }}"
+                        srcset="{{ $heroImageTwo['srcset'] }}"
+                        sizes="(max-width: 768px) 90vw, 80vw"
                         alt="Природа рядом с гостевым домом"
                     />
                     <div class="carousel-caption">
@@ -41,7 +63,9 @@
                 </div>
                 <div class="carousel-item">
                     <img
-                        src="{{ asset('img/kypel.webp') }}"
+                        src="{{ $heroImageThree['src'] }}"
+                        srcset="{{ $heroImageThree['srcset'] }}"
+                        sizes="(max-width: 768px) 90vw, 80vw"
                         alt="Баня и купель"
                     />
                     <div class="carousel-caption">
@@ -100,7 +124,13 @@
 
         <div class="about__container">
         <article class="about__item">
-            <img src="{{ asset('img/vid1.webp') }}" class="about__img" alt="Вид 1">
+            <img
+                src="{{ $viewImageOne['src'] }}"
+                srcset="{{ $viewImageOne['srcset'] }}"
+                sizes="(max-width: 768px) 90vw, 42vw"
+                class="about__img"
+                alt="Вид 1"
+            >
             <div class="about__text">
                 <h5 class="about__title">Абаза встречает красивыми видами уже с дороги</h5>
                 <p class="about__description">
@@ -112,7 +142,13 @@
         </article>
 
         <article class="about__item about__item--reverse">
-            <img src="{{ asset('img/becedka.webp') }}" class="about__img" alt="Вид 2">
+            <img
+                src="{{ $viewImageTwo['src'] }}"
+                srcset="{{ $viewImageTwo['srcset'] }}"
+                sizes="(max-width: 768px) 90vw, 42vw"
+                class="about__img"
+                alt="Вид 2"
+            >
             <div class="about__text">
                 <h5 class="about__title">Беседка у реки</h5>
                 <p class="about__description">
@@ -123,7 +159,13 @@
         </article>
 
         <article class="about__item">
-            <img src="{{ asset('img/vid4.webp') }}" class="about__img" alt="Вид 3">
+            <img
+                src="{{ $viewImageThree['src'] }}"
+                srcset="{{ $viewImageThree['srcset'] }}"
+                sizes="(max-width: 768px) 90vw, 42vw"
+                class="about__img"
+                alt="Вид 3"
+            >
             <div class="about__text">
                 <h5 class="about__title">Река у берега</h5>
                 <p class="about__description">
@@ -133,7 +175,13 @@
         </article>
 
         <article class="about__item about__item--reverse">
-            <img src="{{ asset('img/les.webp') }}" class="about__img" alt="Вид 4">
+            <img
+                src="{{ $viewImageFour['src'] }}"
+                srcset="{{ $viewImageFour['srcset'] }}"
+                sizes="(max-width: 768px) 90vw, 42vw"
+                class="about__img"
+                alt="Вид 4"
+            >
             <div class="about__text">
                 <h5 class="about__title">Прогулка по лесу</h5>
                 <p class="about__description">

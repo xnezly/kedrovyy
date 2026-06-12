@@ -4,16 +4,27 @@
 
 @section('content')
     @php
+        $responsiveImage = static function (string $filename, int $mobileWidth, int $fullWidth): array {
+            $baseName = pathinfo($filename, PATHINFO_FILENAME);
+
+            return [
+                'src' => asset('img/' . $filename),
+                'srcset' => asset('img/' . $baseName . '-mobile.webp') . ' ' . $mobileWidth . 'w, ' . asset('img/' . $filename) . ' ' . $fullWidth . 'w',
+            ];
+        };
+
         $galleryImages = [
-            '6.webp',
-            'pole.webp',
-            '18.webp',
-            '15.webp',
-            '13.webp',
-            '7.webp',
-            '14.webp',
-            '19.webp',
+            ['file' => '6.webp', 'mobile_width' => 640, 'full_width' => 960],
+            ['file' => 'pole.webp', 'mobile_width' => 640, 'full_width' => 1280],
+            ['file' => '18.webp', 'mobile_width' => 640, 'full_width' => 960],
+            ['file' => '15.webp', 'mobile_width' => 640, 'full_width' => 960],
+            ['file' => '13.webp', 'mobile_width' => 640, 'full_width' => 960],
+            ['file' => '7.webp', 'mobile_width' => 640, 'full_width' => 960],
+            ['file' => '14.webp', 'mobile_width' => 640, 'full_width' => 960],
+            ['file' => '19.webp', 'mobile_width' => 640, 'full_width' => 960],
         ];
+
+        $heroImage = $responsiveImage('dom.webp', 640, 944);
     @endphp
 
     <div class="desc">
@@ -44,7 +55,9 @@
 
                 <div class="desc__hero-visual">
                     <img
-                        src="{{ asset('img/dom.webp') }}"
+                        src="{{ $heroImage['src'] }}"
+                        srcset="{{ $heroImage['srcset'] }}"
+                        sizes="(max-width: 1024px) 90vw, 42vw"
                         alt="Гостевой дом Кедровый"
                         class="desc__hero-image"
                     >
@@ -229,17 +242,22 @@
 
                 <div class="desc-gallery">
                     @foreach ($galleryImages as $index => $image)
+                        @php
+                            $galleryImage = $responsiveImage($image['file'], $image['mobile_width'], $image['full_width']);
+                        @endphp
                         <figure class="desc-gallery__item">
                             <button
                                 type="button"
                                 class="desc-gallery__trigger"
                                 data-desc-gallery-trigger
-                                data-desc-gallery-src="{{ asset('img/' . $image) }}"
+                                data-desc-gallery-src="{{ $galleryImage['src'] }}"
                                 data-desc-gallery-alt="Фото гостевого дома Кедровый {{ $index + 1 }}"
                                 aria-label="Открыть фото {{ $index + 1 }}"
                             >
                                 <img
-                                src="{{ asset('img/' . $image) }}"
+                                src="{{ $galleryImage['src'] }}"
+                                srcset="{{ $galleryImage['srcset'] }}"
+                                sizes="(max-width: 768px) 44vw, (max-width: 1200px) 30vw, 22vw"
                                 alt="Фото гостевого дома Кедровый {{ $index + 1 }}"
                                 class="desc-gallery__image"
                                 loading="lazy"
