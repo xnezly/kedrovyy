@@ -93,18 +93,6 @@
         </section>
     </section>
 
-
-    <h1>Номера и цены:</h1>
-    @if($rooms->isEmpty())
-        <h2>Пока нет номеров</h2>
-    @else
-        <div class="card-container">
-            @foreach($rooms as $room)
-                @include('parts.room', ['room' => $room])
-            @endforeach
-        </div>
-    @endif
-
     <section class="about-views">
         <div class="about-views__header">
             <h2 class="about-views__title">Красивые виды на отдыхе</h2>
