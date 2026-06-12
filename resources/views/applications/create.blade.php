@@ -31,7 +31,7 @@
 
             <section class="booking-hero">
                 <div class="booking-hero__media">
-                    <img src="{{ $roomImage }}" alt="{{ $room->name }}" class="booking-hero__image">
+                    <img src="{{ $roomImage }}" alt="{{ $room->name }}" class="booking-hero__image js-skeleton-image">
                     <div class="booking-hero__badge">
                         <span>Уютный отдых в гостевом доме «Кедровый»</span>
                     </div>

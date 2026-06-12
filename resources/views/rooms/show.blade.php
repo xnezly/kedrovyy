@@ -32,7 +32,7 @@
                                         <div class="room-show__carousel-slide {{ $index === 0 ? 'is-active' : '' }}" data-room-slide="{{ $index }}">
                                             <img
                                                 src="{{ $image['url'] }}"
-                                                class="room-show__carousel-image"
+                                                class="room-show__carousel-image js-skeleton-image"
                                                 alt="{{ $image['alt'] }}"
                                             >
                                         </div>
@@ -76,7 +76,7 @@
                                     >
                                         <img
                                             src="{{ $image['url'] }}"
-                                            class="room-show__thumb-image"
+                                            class="room-show__thumb-image js-skeleton-image"
                                             alt="{{ $image['alt'] }}"
                                         >
                                     </button>

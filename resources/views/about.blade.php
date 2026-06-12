@@ -59,7 +59,7 @@
                         srcset="{{ $heroImage['srcset'] }}"
                         sizes="(max-width: 1024px) 90vw, 42vw"
                         alt="Гостевой дом Кедровый"
-                        class="desc__hero-image"
+                        class="desc__hero-image js-skeleton-image"
                     >
                 </div>
             </section>
@@ -259,7 +259,7 @@
                                 srcset="{{ $galleryImage['srcset'] }}"
                                 sizes="(max-width: 768px) 44vw, (max-width: 1200px) 30vw, 22vw"
                                 alt="Фото гостевого дома Кедровый {{ $index + 1 }}"
-                                class="desc-gallery__image"
+                                class="desc-gallery__image js-skeleton-image"
                                 loading="lazy"
                             >
                             </button>

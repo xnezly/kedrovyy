@@ -15,6 +15,7 @@
     <script src="{{ asset('js/page-transition-head.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/skeletons.css') }}">
     @stack('styles')
     <title>@yield('title', 'Кедровый')</title>
 </head>
@@ -190,6 +191,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script defer src="{{ asset('js/burger.js') }}"></script>
 <script defer src="{{ asset('js/index.js') }}"></script>
+<script defer src="{{ asset('js/image-skeletons.js') }}"></script>
 <script defer src="{{ asset('js/page-transition.js') }}"></script>
 <script defer src="{{ asset('js/promo-toast.js') }}"></script>
 @stack('scripts')

@@ -1,0 +1,26 @@
+.js-skeleton-image {
+  opacity: 0;
+  background:
+    linear-gradient(110deg, rgba(25, 135, 84, 0.08) 8%, rgba(255, 255, 255, 0.76) 18%, rgba(25, 135, 84, 0.1) 33%),
+    #e8efe8;
+  background-size: 220% 100%;
+  animation: skeleton-shimmer 1.25s linear infinite;
+  filter: saturate(0.9);
+}
+
+.js-skeleton-image.is-loaded {
+  opacity: 1;
+  background: transparent;
+  animation: none;
+  filter: none;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}

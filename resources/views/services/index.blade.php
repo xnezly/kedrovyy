@@ -20,7 +20,7 @@
                             {{-- Р¤РѕС‚Рѕ СѓСЃР»СѓРіРё --}}
                             @if($service->photo)
                                 <img src="{{ asset('storage/' . $service->photo) }}"
-                                     class="rounded-3 mb-3"
+                                     class="rounded-3 mb-3 js-skeleton-image"
                                      style="width: 100%; height: 150px; object-fit: cover;"
                                      alt="{{ $service->name }}">
                             @else

@@ -28,6 +28,7 @@
                         src="{{ $heroImageOne['src'] }}"
                         srcset="{{ $heroImageOne['srcset'] }}"
                         sizes="(max-width: 768px) 90vw, 80vw"
+                        class="js-skeleton-image"
                         alt="Гостевой дом Кедровый"
                     />
                     <div class="carousel-caption">
@@ -47,6 +48,7 @@
                         src="{{ $heroImageTwo['src'] }}"
                         srcset="{{ $heroImageTwo['srcset'] }}"
                         sizes="(max-width: 768px) 90vw, 80vw"
+                        class="js-skeleton-image"
                         alt="Природа рядом с гостевым домом"
                     />
                     <div class="carousel-caption">
@@ -66,6 +68,7 @@
                         src="{{ $heroImageThree['src'] }}"
                         srcset="{{ $heroImageThree['srcset'] }}"
                         sizes="(max-width: 768px) 90vw, 80vw"
+                        class="js-skeleton-image"
                         alt="Баня и купель"
                     />
                     <div class="carousel-caption">
@@ -128,7 +131,7 @@
                 src="{{ $viewImageOne['src'] }}"
                 srcset="{{ $viewImageOne['srcset'] }}"
                 sizes="(max-width: 768px) 90vw, 42vw"
-                class="about__img"
+                class="about__img js-skeleton-image"
                 alt="Вид 1"
             >
             <div class="about__text">
@@ -146,7 +149,7 @@
                 src="{{ $viewImageTwo['src'] }}"
                 srcset="{{ $viewImageTwo['srcset'] }}"
                 sizes="(max-width: 768px) 90vw, 42vw"
-                class="about__img"
+                class="about__img js-skeleton-image"
                 alt="Вид 2"
             >
             <div class="about__text">
@@ -163,7 +166,7 @@
                 src="{{ $viewImageThree['src'] }}"
                 srcset="{{ $viewImageThree['srcset'] }}"
                 sizes="(max-width: 768px) 90vw, 42vw"
-                class="about__img"
+                class="about__img js-skeleton-image"
                 alt="Вид 3"
             >
             <div class="about__text">
@@ -179,7 +182,7 @@
                 src="{{ $viewImageFour['src'] }}"
                 srcset="{{ $viewImageFour['srcset'] }}"
                 sizes="(max-width: 768px) 90vw, 42vw"
-                class="about__img"
+                class="about__img js-skeleton-image"
                 alt="Вид 4"
             >
             <div class="about__text">
