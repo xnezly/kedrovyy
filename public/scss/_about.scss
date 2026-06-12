@@ -115,6 +115,25 @@
     }
 }
 
+.about-views {
+    width: 100%;
+    margin: 5rem 0 0;
+
+    &__header {
+        width: 80%;
+        margin: 0 auto 2.4rem;
+        text-align: center;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: clamp(2.8rem, 3vw, 3.8rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: #161616;
+    }
+}
+
 .about {
     &__container {
         width: 80%;
@@ -180,6 +199,12 @@
 }
 
 @media (max-width: 1024px) {
+    .about-views {
+        &__header {
+            width: 88%;
+        }
+    }
+
     .about {
         &__container {
             width: 88%;
@@ -196,6 +221,19 @@
 }
 
 @media (max-width: 767px) {
+    .about-views {
+        margin-top: 4rem;
+
+        &__header {
+            width: 92%;
+            margin-bottom: 1.8rem;
+        }
+
+        &__title {
+            font-size: 2.4rem;
+        }
+    }
+
     .about {
         &__container {
             width: 92%;

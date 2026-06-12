@@ -281,8 +281,21 @@ $font-xl: 32px;
 
 // === Responsive ===
 @media (max-width: 767px) {
+    .contacts {
+        padding: 24px 0 40px;
+    }
+
+    .contacts__container {
+        padding: 0 12px;
+    }
+
     .contacts__card {
         padding: $spacing-md;
+    }
+
+    .contacts__header {
+        margin-bottom: $spacing-lg;
+        padding-bottom: $spacing-md;
     }
 
     .contacts__title {

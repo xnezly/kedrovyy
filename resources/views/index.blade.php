@@ -105,9 +105,12 @@
         </div>
     @endif
 
-    <h2>Красивые виды на отдыхе:</h2>
+    <section class="about-views">
+        <div class="about-views__header">
+            <h2 class="about-views__title">Красивые виды на отдыхе</h2>
+        </div>
 
-    <div class="about__container">
+        <div class="about__container">
         <article class="about__item">
             <img src="{{ asset('img/vid1.webp') }}" class="about__img" alt="Вид 1">
             <div class="about__text">
@@ -150,7 +153,8 @@
                 </p>
             </div>
         </article>
-    </div>
+        </div>
+    </section>
 
      <section class="faq" aria-labelledby="faq-title">
         <div class="faq__header">
